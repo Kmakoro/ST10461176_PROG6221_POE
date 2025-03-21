@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChatBot.cs" />
+    <Compile Include="CyberDictionary.cs" />
     <Compile Include="logo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

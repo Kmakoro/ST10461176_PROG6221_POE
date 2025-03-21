@@ -10,9 +10,7 @@ namespace ST10461176_PROG6221_POE
     {
         private string user = string.Empty;
         private Dictionary<string,int> keywords = new Dictionary<string,int>();
-        private Dictionary<string, int> passwordsTopic = new Dictionary<string, int>();
-        private Dictionary<string, int> phishingTopic = new Dictionary<string, int>();
-        private Dictionary<string, int> safeBrowsingTopic = new Dictionary<string, int>();
+        
         public ChatBot(string user)
         {
             this.user = user;
@@ -61,7 +59,7 @@ namespace ST10461176_PROG6221_POE
                 //get the key at the random index
                 string key = randomkeys[index];
                 //get the corresponding value pair at index
-                int value = passwordsTopic[key];
+                int value = Topic[key];
 
                 response = String.Concat(( counter + 1), key + '\n' );
             }
