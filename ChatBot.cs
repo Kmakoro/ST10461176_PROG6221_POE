@@ -73,7 +73,7 @@ namespace ST10461176_PROG6221_POE
                 }
 
                 //check if no incorrect keywords were entered
-                if(incorrectwords <= 1)
+                if(incorrectwords == 0)
                 {
                     //loop through the words or the sentence
                     for(int index = 0; index < words.Length; index++)
@@ -99,13 +99,14 @@ namespace ST10461176_PROG6221_POE
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write(bot);
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("Error! I did not understand your question. Please enter a valid question related to cyber security");
+                    Console.WriteLine("Error! I did not understand your question. Please enter a valid question related to cyber security");
                 }
 
                 if (passworddetected)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write(bot);
+                    Console.ForegroundColor = ConsoleColor.White;
                     //give response based on password
                     Console.WriteLine(Response(responseDictionary.getPasswordDictionary()));
 
@@ -114,6 +115,7 @@ namespace ST10461176_PROG6221_POE
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write(bot);
+                    Console.ForegroundColor = ConsoleColor.White;
                     //give response based on phishing
                     Console.WriteLine(Response(responseDictionary.getPhishingDictionary()));
                     
@@ -128,25 +130,27 @@ namespace ST10461176_PROG6221_POE
 
         private void initializeKeywords()
         {
-            keywords.Add($"What", 1);
+            keywords.Add($"what", 1);
             keywords.Add($"is", 2);
             keywords.Add($"tell",3);
             keywords.Add($"me",4);
             keywords.Add($"about",5);
-            keywords.Add($"How",6);
+            keywords.Add($"how",6);
             keywords.Add($"are",7);
             keywords.Add($"you",8);
-            keywords.Add($"whats's",9);
+            keywords.Add($"what's",9);
             keywords.Add($"your",10);
             keywords.Add($"purpose",11);
             keywords.Add($"can",12);
-            keywords.Add($"I",13);
+            keywords.Add($"i",13);
             keywords.Add($"ask",14);
-            keywords.Add($"you",15);
-            keywords.Add("password", 16);
-            keywords.Add("phishing", 17);
-            keywords.Add("safe", 18);
-            keywords.Add("browsing", 19);
+            keywords.Add($"password", 15);
+            keywords.Add($"phishing", 16);
+            keywords.Add($"safe", 17);
+            keywords.Add($"browsing", 18);
+            keywords.Add($"safety?", 19);
+            keywords.Add($"safety", 20);
+            keywords.Add($"more", 21);
         }
 
         //function to retrieve 3 random reponses based on Topic
@@ -169,7 +173,7 @@ namespace ST10461176_PROG6221_POE
                 //get the corresponding value pair at index
                 int value = Topic[key];
 
-                response = String.Concat(( counter + 1), key + '\n' );
+                response = response +'\n'+ String.Concat(( counter + 1), ". ", key );
             }
             return response;
         }
