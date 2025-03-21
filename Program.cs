@@ -19,8 +19,9 @@ namespace ST10461176_PROG6221_POE
             new logo() { };
             //user class
             UserLogin user = new UserLogin();
+            user.setUsername();
             //chatbot initialize
-            ChatBot chat = new ChatBot(user);
+            ChatBot chat = new ChatBot(user.getUsername());
 
 
         }

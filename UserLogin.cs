@@ -1,4 +1,6 @@
-﻿namespace ST10461176_PROG6221_POE
+﻿using System;
+
+namespace ST10461176_PROG6221_POE
 {
     public class UserLogin
     {
@@ -6,9 +8,13 @@
         private string username = string.Empty; 
 
         //setter
-        public void setUsername(string username)
+        public void setUsername()
         {
-            this.username = username;
+
+            Console.Write("Hello, Please input your username >> ");
+            this.username = Console.ReadLine();
+            //using the string function to combine strings
+            Console.WriteLine(String.Concat("Hello ", this.username));
         }
         //getter
         public string getUsername()

@@ -2,5 +2,9 @@
 {
     public class ChatBot
     {
+        public ChatBot(string user)
+        {
+
+        }
     }
 }
