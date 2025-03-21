@@ -8,14 +8,122 @@ namespace ST10461176_PROG6221_POE
 {
     public class ChatBot
     {
+        //chatbot string 
+        string bot = "ChatBot >> : ";
+        //username 
         private string user = string.Empty;
+        //dictionary to check the keys based on topic
         private Dictionary<string,int> keywords = new Dictionary<string,int>();
+
+        //initialize the cyber dictionary to give responses
+        private CyberDictionary responseDictionary;
         
         public ChatBot(string user)
         {
             this.user = user;
-            Console.Write
+            this.responseDictionary = new CyberDictionary();
+            initializeKeywords();
+            //string to hold the question
+            string question = string.Empty;
+            //keep the state true while the chatbot is active
+            Boolean state = true;
+            do
+            {
+                //ask question
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(user + " >> :");
+                Console.ForegroundColor = ConsoleColor.White;
+                question = Console.ReadLine();
+                question.ToLower();
+                if (question.Equals("exit"))
+                {
+                    state = false;
+                }
+                else
+                {
+                    checkQuestion(question);
+                }
 
+            } while (state);
+
+        }
+
+        private void checkQuestion(string question)
+        {
+            Boolean passworddetected = false;
+            Boolean phishingDetected = false;
+            Boolean safebrowsingDetected = false;
+            string[] words;
+            if(question != string.Empty)
+            {
+
+                words = question.Split(' ');
+                int correctwords = 0;
+                int incorrectwords = 0;
+                for(int counter = 0; counter < words.Length; counter++)
+                {
+                    if (keywords.ContainsKey(words[counter]))
+                    {
+                        correctwords++;
+                    }
+                    else
+                    {
+                        incorrectwords++;
+                    }
+                }
+
+                //check if no incorrect keywords were entered
+                if(incorrectwords <= 1)
+                {
+                    //loop through the words or the sentence
+                    for(int index = 0; index < words.Length; index++)
+                    {
+                        if (words[index].Contains("password"))
+                        {
+                            
+                            passworddetected = true;
+
+                        }
+                        if (words[index].Contains("phishing"))
+                        {
+                            
+                            phishingDetected = true;
+                        }
+                        
+                    }
+
+                }
+                else
+                {
+                    //give error message for not understanding the question
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write(bot);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Error! I did not understand your question. Please enter a valid question related to cyber security");
+                }
+
+                if (passworddetected)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write(bot);
+                    //give response based on password
+                    Console.WriteLine(Response(responseDictionary.getPasswordDictionary()));
+
+                }
+                if (phishingDetected)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write(bot);
+                    //give response based on phishing
+                    Console.WriteLine(Response(responseDictionary.getPhishingDictionary()));
+                    
+                }
+            }
+            else
+            {
+
+                Console.WriteLine(string.Concat(bot, "Please Enter a Valid Question based on cybersecurity..."));
+            }
         }
 
         private void initializeKeywords()
