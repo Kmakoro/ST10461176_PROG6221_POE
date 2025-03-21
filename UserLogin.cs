@@ -14,7 +14,7 @@ namespace ST10461176_PROG6221_POE
             Console.Write("Hello, Please input your username >> ");
             this.username = Console.ReadLine();
             //using the string function to combine strings
-            Console.WriteLine(String.Concat("Hello ", this.username));
+            Console.WriteLine(String.Concat("Hello ", this.username, " weclome to the Cybersecurity Awareness Bot"));
         }
         //getter
         public string getUsername()
