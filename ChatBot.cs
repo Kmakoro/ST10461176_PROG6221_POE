@@ -15,16 +15,18 @@ namespace ST10461176_PROG6221_POE
         //dictionary to check the keys based on topic
         private Dictionary<string,int> keywords = new Dictionary<string,int>();
 
-        //initialize the cyber dictionary to give responses
+        //creaye cyber dictionary object to give responses
         private CyberDictionary responseDictionary;
-        
+
+        //string to hold the question
+        private string question = string.Empty;
+
         public ChatBot(string user)
         {
             this.user = user;
             this.responseDictionary = new CyberDictionary();
             initializeKeywords();
-            //string to hold the question
-            string question = string.Empty;
+            
             //keep the state true while the chatbot is active
             Boolean state = true;
             do
@@ -53,6 +55,7 @@ namespace ST10461176_PROG6221_POE
             Boolean passworddetected = false;
             Boolean phishingDetected = false;
             Boolean safebrowsingDetected = false;
+            Boolean tellmeabout = false;
             string[] words;
             if(question != string.Empty)
             {
@@ -99,7 +102,7 @@ namespace ST10461176_PROG6221_POE
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write(bot);
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Error! I did not understand your question. Please enter a valid question related to cyber security");
+                    Console.WriteLine("I didn't quite understand that. Could you rephrase?");
                 }
 
                 if (passworddetected)
@@ -124,7 +127,7 @@ namespace ST10461176_PROG6221_POE
             else
             {
 
-                Console.WriteLine(string.Concat(bot, "Please Enter a Valid Question based on cybersecurity..."));
+                Console.WriteLine(string.Concat(bot, "I didn't quite understand that. Could you rephrase?"));
             }
         }
 
@@ -151,6 +154,9 @@ namespace ST10461176_PROG6221_POE
             keywords.Add($"safety?", 19);
             keywords.Add($"safety", 20);
             keywords.Add($"more", 21);
+            keywords.Add($"how are you?",23);
+            keywords.Add($"what's your purpose?", 24);
+            keywords.Add($"what can i ask you about?", 25);
         }
 
         //function to retrieve 3 random reponses based on Topic

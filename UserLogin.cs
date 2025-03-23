@@ -10,10 +10,12 @@ namespace ST10461176_PROG6221_POE
         //setter
         public void setUsername()
         {
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Hello, Please input your username >> ");
+            Console.ForegroundColor = ConsoleColor.White;
             this.username = Console.ReadLine();
             //using the string function to combine strings
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(String.Concat("Hello ", this.username, " weclome to the Cybersecurity Awareness Bot"));
         }
         //getter
