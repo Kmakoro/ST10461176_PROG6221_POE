@@ -3,41 +3,35 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 
 namespace ST10461176_PROG6221_POE
 {
     public class ChatBot
     {
-        //chatbot string 
-        string bot = "ChatBot >> : ";
+        
         //username 
         private string user = string.Empty;
-        //dictionary to check the keys based on topic
-        private Dictionary<string,int> keywords = new Dictionary<string,int>();
-
         //creaye cyber dictionary object to give responses
         private CyberDictionary responseDictionary;
-
         //string to hold the question
         private string question = string.Empty;
 
+        //constructor to initialize the chatbot
         public ChatBot(string user)
         {
             this.user = user;
             this.responseDictionary = new CyberDictionary();
-            initializeKeywords();
+            
             
             //keep the state true while the chatbot is active
             Boolean state = true;
             //loop through the chatbot until the user types exit
             do
             {
-                //ask question
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write(user + " >> :");
-                Console.ForegroundColor = ConsoleColor.White;
-                question = Console.ReadLine();
-                question = question.ToLower();
+                //method to ask question
+                askquestion();
+
                 //check if the user wants to exit
                 if (question.Equals("exit"))
                 {
@@ -54,22 +48,35 @@ namespace ST10461176_PROG6221_POE
 
         }
 
+        private void askquestion()
+        {
+            //ask question
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(user + " >> : ");
+            Console.ForegroundColor = ConsoleColor.White;
+            question = Console.ReadLine();
+            question = question.ToLower();
+        }
+
         private void checkQuestion(string question)
         {
             Boolean passworddetected = false;
             Boolean phishingDetected = false;
             Boolean safebrowsingDetected = false;
             string[] words;
+
+            //begin working if the string is not empty
             if(question != string.Empty)
             {
                 
                 words = question.Split(' ');
                 int correctwords = 0;
                 int incorrectwords = 0;
+                //loop to check if the question contains correct words in the dictionary if not then the user will have to be prompted again
                 for(int counter = 0; counter < words.Length; counter++)
                 {
                     //check if the word is in the dictionary
-                    if (keywords.ContainsKey(words[counter]))
+                    if (responseDictionary.getKeywords().ContainsKey(words[counter]))
                     {
                         correctwords++;
                     }
@@ -78,7 +85,7 @@ namespace ST10461176_PROG6221_POE
                     {
                         incorrectwords++;
                     }
-                }
+                }//end of loop
 
                 //check if no incorrect keywords were entered
                 if(incorrectwords == 0)
@@ -105,6 +112,14 @@ namespace ST10461176_PROG6221_POE
 
                             safebrowsingDetected = true;
                         }
+                        //provide a response to the user to greet the user
+                        if (question.Contains("hello"))
+                        {
+                            botResponse(string.Concat("Hello ", user, " I trust you are well, " +
+                                "how would you like me to assist you today? " +
+                                "please note this chatbot can only respond to cybersecurity related questions."));
+                            break;
+                        }
                         //provide a response to the user to know how the chatbot is doing
                         if (question.Contains("how are you"))
                         {
@@ -125,14 +140,15 @@ namespace ST10461176_PROG6221_POE
                         }
 
                         //provide a response to a user should there be a question without direct meaning
-                        if(!phishingDetected && !passworddetected && !safebrowsingDetected)
+                       /* if(!phishingDetected && !passworddetected && !safebrowsingDetected)
                         {
                             botResponse("Remember you can ask me about anything related to cyber security examples include things like password, phishing and safe browsing!", true);
                             break;
-                        }
+                        }*/
                     }
 
                 }
+                //else give error should there be incorrect or non-words entered
                 else
                 {
                     //give error message for not understanding the question of the user or words used not in the dictionary
@@ -140,31 +156,35 @@ namespace ST10461176_PROG6221_POE
                    
                 }
 
+                //if password has been detected then proceed
                 if (passworddetected)
                 {
                     
                     //give response based on password
-                    botResponse(Response(responseDictionary.getPasswordDictionary()));
+                    botResponse(Response(responseDictionary.getPasswordDictionary(),"\tPassword"));
                   
 
                 }
+                //if phishing has been detected then proceed
                 if (phishingDetected)
                 {
                     
                     //give response based on phishing
-                    botResponse(Response(responseDictionary.getPhishingDictionary()));
+                    botResponse(Response(responseDictionary.getPhishingDictionary(),"\tPhishing"));
                     
                     
                 }
+                //if safe browsing has been detected then proceed
                 if(safebrowsingDetected)
                 {
 
                     //give response based on safe browsing
-                    botResponse(Response(responseDictionary.getSafeBrosingDictionary()));
+                    botResponse(Response(responseDictionary.getSafeBrosingDictionary(),"\tSafe Browsing"));
 
                 }
               
             }
+            //else if the string is empty display appropriate message
             else
             {
                 //give error message for not understanding the question of the user or words used not in the dictionary
@@ -173,46 +193,20 @@ namespace ST10461176_PROG6221_POE
             }
         }
 
-        //initialize the keywords
-        private void initializeKeywords()
-        {
-            keywords.Add($"what", 1);
-            keywords.Add($"is", 2);
-            keywords.Add($"tell",3);
-            keywords.Add($"me",4);
-            keywords.Add($"about",5);
-            keywords.Add($"how",6);
-            keywords.Add($"are",7);
-            keywords.Add($"you",8);
-            keywords.Add($"what's",9);
-            keywords.Add($"your",10);
-            keywords.Add($"purpose",11);
-            keywords.Add($"can",12);
-            keywords.Add($"i",13);
-            keywords.Add($"ask",14);
-            keywords.Add($"password", 15);
-            keywords.Add($"phishing", 16);
-            keywords.Add($"safe", 17);
-            keywords.Add($"browsing", 18);
-            keywords.Add($"safety?", 19);
-            keywords.Add($"safety", 20);
-            keywords.Add($"more", 21);
-            keywords.Add($"how are you?",23);
-            keywords.Add($"what's your purpose?", 24);
-            keywords.Add($"what can i ask you about?", 25);
-            keywords.Add($"and", 26);
-        }
+       
 
         //function to display the bot response
         private void botResponse(string response, bool error = false)
         {
+            //chatbot string 
+            string bot = "ChatBot >> : ";
             //check if the response is an error
             if (error)
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write(bot);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(response);
+                Console.WriteLine(string.Concat("\t",response));
             }
             //display the response
             else
@@ -220,22 +214,30 @@ namespace ST10461176_PROG6221_POE
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write(bot);
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(response);
+                Console.Write("\t");
+                for(int counter = 0; counter < response.Length; counter++)
+                {
+                    Console.Write(response[counter]);
+                    Thread.Sleep(20);
+                }
+                //Console.WriteLine(string.Concat("\t", response));
+                Console.WriteLine();
+               
             }
                 
         }
 
         //function to retrieve 3 random reponses based on Topic
-        private string Response(Dictionary<string,int> Topic)
+        private string Response(Dictionary<string, int> Topic, string optional = null)
         {
-
+            //local string variable to hold the response
             string response = string.Empty;
             //create a local random object
             Random random = new Random();
             //convert dictionary keys to a list for easy random access
             List<string> randomkeys = Topic.Keys.ToList();
-            //randomly display 3 values from the dictionary 
-
+            
+            //randomly display 3 values from the dictionary
             for(int counter = 0; counter < 3; counter++)
             {
                 //generate a random index
@@ -246,6 +248,11 @@ namespace ST10461176_PROG6221_POE
                 int value = Topic[key];
                 //concatinate or join the responses on a new line
                 response = response +'\n'+ String.Concat(( counter + 1), ". ", key );
+            }
+            //return the response should there be an optional value
+            if (optional != null)
+            {//text formatting and underling the optional value
+                return string.Concat(optional,"\n","\t\t\t", new string('-', optional.Length), "\n",response);
             }
             //return the response
             return response;

@@ -10,6 +10,7 @@ namespace ST10461176_PROG6221_POE
         //setter
         public void setUsername()
         {
+            
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Hello, Please input your username >> ");
             Console.ForegroundColor = ConsoleColor.White;
