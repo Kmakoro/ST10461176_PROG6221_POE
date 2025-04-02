@@ -13,7 +13,7 @@ namespace ST10461176_PROG6221_POE
             //set new path to root directory of app
             string new_path = full_location.Replace("bin\\Debug\\", "");
             //set final path of the audio recording
-            string voicePath = Path.Combine(new_path, "sample.wav");
+            string voicePath = Path.Combine(new_path, "AI voice.wav");
 
             //try to load and play the voice greeting
             try
