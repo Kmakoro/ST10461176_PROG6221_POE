@@ -33,12 +33,13 @@ namespace ST10461176_PROG6221_POE
                         int rgb = (pixelColor.R + pixelColor.G + pixelColor.B) / 3;
 
                         //ascii characters
-                        char ascii = rgb > 200 ? '*' : rgb > 150 ? '#' : rgb > 60 ? '^' : 'X';
+                        char ascii = rgb > 200 ? '.' : rgb > 150 ? '*' : rgb > 60 ? '`' : '+';
                         Console.Write(ascii);
                     }
                     //new line
                     Console.WriteLine();
                 }
+                ChatBot.botResponse("Welcome to CoCo your AI-powered cybersecurity assistant");
 
             }
             catch(Exception ex)

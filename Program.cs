@@ -13,7 +13,7 @@ namespace ST10461176_PROG6221_POE
         {
             //voice greeting
             //class with a constructor
-            new voiceGreeting() { };
+            //new voiceGreeting() { };
             //logo
             //class with a constructor
             new logo() { };

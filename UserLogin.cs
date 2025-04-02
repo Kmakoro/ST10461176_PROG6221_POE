@@ -17,7 +17,9 @@ namespace ST10461176_PROG6221_POE
             this.username = Console.ReadLine();
             //using the string function to combine strings
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(String.Concat("Hello ", this.username, " weclome to the Cybersecurity Awareness Bot"));
+            ChatBot.botResponse(String.Concat("Hello ", this.username, " weclome to CoCo your AI-powered cybersecurity assistant, " +
+                "Whether you’re defending against threats, securing your systems, or just looking for best practices, I’m here to help you stay safe in the digital world."));
+            
         }
         //getter
         public string getUsername()

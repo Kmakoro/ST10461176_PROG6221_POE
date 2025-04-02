@@ -36,6 +36,7 @@ namespace ST10461176_PROG6221_POE
                 if (question.Equals("exit"))
                 {
                     //set the state to false to exit the loop
+                    botResponse("Thank you for using CoCo your AI-powered cybersecurity assistant. Have a great day!");
                     state = false;
                 }
                 else
@@ -51,7 +52,9 @@ namespace ST10461176_PROG6221_POE
         private void askquestion()
         {
             //ask question
+            
             Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Please enter your question below or type 'exit' to terminate the program");
             Console.Write(user + " >> : ");
             Console.ForegroundColor = ConsoleColor.White;
             question = Console.ReadLine();
@@ -196,7 +199,7 @@ namespace ST10461176_PROG6221_POE
        
 
         //function to display the bot response
-        private void botResponse(string response, bool error = false)
+        public static void botResponse(string response, bool error = false)
         {
             //chatbot string 
             string bot = "ChatBot >> : ";
@@ -240,8 +243,8 @@ namespace ST10461176_PROG6221_POE
             //randomly display 3 values from the dictionary
             for(int counter = 0; counter < 3; counter++)
             {
-                //generate a random index
-                int index = random.Next(randomkeys.Count);
+                //generate a random index or number
+                int index = random.Next(1,randomkeys.Count);
                 //get the key at the random index
                 string key = randomkeys[index];
                 //get the corresponding value pair at index
