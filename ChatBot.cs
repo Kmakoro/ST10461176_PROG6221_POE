@@ -29,6 +29,7 @@ namespace ST10461176_PROG6221_POE
             
             //keep the state true while the chatbot is active
             Boolean state = true;
+            //loop through the chatbot until the user types exit
             do
             {
                 //ask question
@@ -36,17 +37,20 @@ namespace ST10461176_PROG6221_POE
                 Console.Write(user + " >> :");
                 Console.ForegroundColor = ConsoleColor.White;
                 question = Console.ReadLine();
-                question.ToLower();
+                question = question.ToLower();
+                //check if the user wants to exit
                 if (question.Equals("exit"))
                 {
+                    //set the state to false to exit the loop
                     state = false;
                 }
                 else
                 {
+                    //check the question
                     checkQuestion(question);
                 }
 
-            } while (state);
+            } while (state);//end of loop
 
         }
 
@@ -55,20 +59,21 @@ namespace ST10461176_PROG6221_POE
             Boolean passworddetected = false;
             Boolean phishingDetected = false;
             Boolean safebrowsingDetected = false;
-            Boolean tellmeabout = false;
             string[] words;
             if(question != string.Empty)
             {
-
+                
                 words = question.Split(' ');
                 int correctwords = 0;
                 int incorrectwords = 0;
                 for(int counter = 0; counter < words.Length; counter++)
                 {
+                    //check if the word is in the dictionary
                     if (keywords.ContainsKey(words[counter]))
                     {
                         correctwords++;
                     }
+                    //check if the word is not in the dictionary
                     else
                     {
                         incorrectwords++;
@@ -81,56 +86,94 @@ namespace ST10461176_PROG6221_POE
                     //loop through the words or the sentence
                     for(int index = 0; index < words.Length; index++)
                     {
+                        //check if the user is asking about passwords
                         if (words[index].Contains("password"))
                         {
                             
                             passworddetected = true;
 
                         }
+                        //check if the user is asking about phishing
                         if (words[index].Contains("phishing"))
                         {
                             
                             phishingDetected = true;
                         }
-                        
+                        //check if the user is asking about safe browsing
+                        if (question.Contains("safe browsing"))
+                        {
+
+                            safebrowsingDetected = true;
+                        }
+                        //provide a response to the user to know how the chatbot is doing
+                        if (question.Contains("how are you"))
+                        {
+                            botResponse("I'm doing great, thank you for asking. How can I help you today?");
+                            break;
+                        }
+                        //provide a repsonse to the user to know the purpose of the chatbot
+                        if (question.Contains("what's your purpose"))
+                        {
+                           botResponse("I'm here to help you with any questions you have about cybersecurity. Feel free to ask me anything!");
+                            break;
+                        }
+                        //provaide a response for the user to know what they can ask the chatbot
+                        if (question.Contains("what can i ask you about"))
+                        {
+                            botResponse("You can ask me about passwords, phishing, safe browsing, and more. Just type your question, and I'll do my best to help!");
+                            break;
+                        }
+
+                        //provide a response to a user should there be a question without direct meaning
+                        if(!phishingDetected && !passworddetected && !safebrowsingDetected)
+                        {
+                            botResponse("Remember you can ask me about anything related to cyber security examples include things like password, phishing and safe browsing!", true);
+                            break;
+                        }
                     }
 
                 }
                 else
                 {
-                    //give error message for not understanding the question
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write(bot);
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("I didn't quite understand that. Could you rephrase?");
+                    //give error message for not understanding the question of the user or words used not in the dictionary
+                   botResponse("I didn't quite understand that. Could you rephrase? Remember to as me about topics related to cyber security", true);
+                   
                 }
 
                 if (passworddetected)
                 {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write(bot);
-                    Console.ForegroundColor = ConsoleColor.White;
+                    
                     //give response based on password
-                    Console.WriteLine(Response(responseDictionary.getPasswordDictionary()));
+                    botResponse(Response(responseDictionary.getPasswordDictionary()));
+                  
 
                 }
                 if (phishingDetected)
                 {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write(bot);
-                    Console.ForegroundColor = ConsoleColor.White;
+                    
                     //give response based on phishing
-                    Console.WriteLine(Response(responseDictionary.getPhishingDictionary()));
+                    botResponse(Response(responseDictionary.getPhishingDictionary()));
+                    
                     
                 }
+                if(safebrowsingDetected)
+                {
+
+                    //give response based on safe browsing
+                    botResponse(Response(responseDictionary.getSafeBrosingDictionary()));
+
+                }
+              
             }
             else
             {
-
-                Console.WriteLine(string.Concat(bot, "I didn't quite understand that. Could you rephrase?"));
+                //give error message for not understanding the question of the user or words used not in the dictionary
+                botResponse("Please type a question related to cyber security or type exit to terminate the program",true);
+              
             }
         }
 
+        //initialize the keywords
         private void initializeKeywords()
         {
             keywords.Add($"what", 1);
@@ -157,6 +200,29 @@ namespace ST10461176_PROG6221_POE
             keywords.Add($"how are you?",23);
             keywords.Add($"what's your purpose?", 24);
             keywords.Add($"what can i ask you about?", 25);
+            keywords.Add($"and", 26);
+        }
+
+        //function to display the bot response
+        private void botResponse(string response, bool error = false)
+        {
+            //check if the response is an error
+            if (error)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write(bot);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(response);
+            }
+            //display the response
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write(bot);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(response);
+            }
+                
         }
 
         //function to retrieve 3 random reponses based on Topic
@@ -178,9 +244,10 @@ namespace ST10461176_PROG6221_POE
                 string key = randomkeys[index];
                 //get the corresponding value pair at index
                 int value = Topic[key];
-
+                //concatinate or join the responses on a new line
                 response = response +'\n'+ String.Concat(( counter + 1), ". ", key );
             }
+            //return the response
             return response;
         }
 
