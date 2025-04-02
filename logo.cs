@@ -16,7 +16,7 @@ namespace ST10461176_PROG6221_POE
                 //set new path to root directory of app
                 string new_path = full_location.Replace("bin\\Debug\\", "");
                 //set final path of the image
-                string imagePath = Path.Combine(new_path, "image.jpg");
+                string imagePath = Path.Combine(new_path, "cyber.jpg");
 
                 Bitmap image = new Bitmap(imagePath);
                 image = new Bitmap(image, new Size(100, 40));
@@ -33,7 +33,7 @@ namespace ST10461176_PROG6221_POE
                         int rgb = (pixelColor.R + pixelColor.G + pixelColor.B) / 3;
 
                         //ascii characters
-                        char ascii = rgb > 200 ? '.' : rgb > 150 ? '*' : rgb > 60 ? '`' : '+';
+                        char ascii = rgb > 230 ? '.' : rgb > 150 ? '*' : rgb > 60 ? '`' : '@';
                         Console.Write(ascii);
                     }
                     //new line
