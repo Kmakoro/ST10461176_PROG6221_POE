@@ -54,14 +54,12 @@ namespace ST10461176_PROG6221_POE
                                 break;
                         }
                         
-                           // Console.ForegroundColor = ConsoleColor.Red;
-                           // Console.Write(ascii);
-                        
-                       // Console.Write(ascii);
+                          
                     }
                     //new line
                     Console.WriteLine();
                 }
+                PrintFancyCoCo();
                 ChatBot.botResponse("Welcome to CoCo your AI-powered cybersecurity assistant");
 
             }
@@ -70,6 +68,22 @@ namespace ST10461176_PROG6221_POE
                 //Display appropriate error message
                 Console.WriteLine(ex.Message);
             }
+
+        }
+        static void PrintFancyCoCo()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(@"   _____       _____");
+            Console.WriteLine(@"  / ____|     / ____|");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(@" | |     ___ | |     ___ ");
+            Console.WriteLine(@" | |    / _ \|      / _ \");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine(@" | |___| (_) | |___| (_) |");
+            Console.WriteLine(@"  \_____\___/ \_____\___/ ");
+            Console.ResetColor();
+            Console.WriteLine();
         }
     }
 }
