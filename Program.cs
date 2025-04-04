@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ST10461176_PROG6221_POE
+﻿namespace ST10461176_PROG6221_POE
 {
     class Program
     {

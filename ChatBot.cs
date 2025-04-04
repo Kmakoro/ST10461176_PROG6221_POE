@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
 namespace ST10461176_PROG6221_POE
@@ -204,7 +200,22 @@ namespace ST10461176_PROG6221_POE
                     botResponse(Response(responseDictionary.getSafeBrosingDictionary(),"\tSafe Browsing"));
 
                 }
-              
+                if(virusdeteDetected)
+                {
+                    //give response based on virus
+                    botResponse(Response(responseDictionary.getVirusDictionary(), "\tVirus"));
+                }
+                if (malwareDetected)
+                {
+                    //give response based on malware
+                    botResponse(Response(responseDictionary.getMalwareDictionary(), "\tMalware"));
+                }
+                if (ransomwareDetected)
+                {
+                    //give response based on ransomware
+                    botResponse(Response(responseDictionary.getRansomwareDictionary(), "\tRansomware"));
+                }
+
             }
             //else if the string is empty display appropriate message
             else
