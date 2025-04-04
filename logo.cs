@@ -34,7 +34,30 @@ namespace ST10461176_PROG6221_POE
 
                         //ascii characters
                         char ascii = rgb > 230 ? '.' : rgb > 150 ? '*' : rgb > 60 ? '`' : '@';
-                        Console.Write(ascii);
+                        switch (ascii)
+                        {
+                            case '@':
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write(ascii);
+                                break;
+                            case '`':
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write(ascii);
+                                break;
+                            case '*':
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write(ascii);
+                                break;
+                            case '.':
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write(ascii);
+                                break;
+                        }
+                        
+                           // Console.ForegroundColor = ConsoleColor.Red;
+                           // Console.Write(ascii);
+                        
+                       // Console.Write(ascii);
                     }
                     //new line
                     Console.WriteLine();

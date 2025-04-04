@@ -66,6 +66,9 @@ namespace ST10461176_PROG6221_POE
             Boolean passworddetected = false;
             Boolean phishingDetected = false;
             Boolean safebrowsingDetected = false;
+            Boolean virusdeteDetected = false;
+            Boolean malwareDetected = false;
+            Boolean ransomwareDetected = false;
             string[] words;
 
             //begin working if the string is not empty
@@ -114,6 +117,20 @@ namespace ST10461176_PROG6221_POE
                         {
 
                             safebrowsingDetected = true;
+                        }
+                        //check if the user is asking about virus
+                        if (words[index].Contains("virus"))
+                        {
+                            virusdeteDetected = true;
+                        }
+                        //check if the user is asking about malware
+                        if (words[index].Contains("malware"))
+                        {
+                            malwareDetected = true;
+                        }
+                        //check if the user is asking about ransomware
+                        if (words[index].Contains("ransomware")){
+                            ransomwareDetected = true;
                         }
                         //provide a response to the user to greet the user
                         if (question.Contains("hello"))
