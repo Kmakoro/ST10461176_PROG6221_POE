@@ -33,7 +33,7 @@ namespace ST10461176_PROG6221_POE
                 askquestion();
 
                 //check if the user wants to exit
-                if (question.Equals("exit"))
+                if (question.Equals("exit")||question.Equals("quit") || question.Equals("q"))
                 {
                     //set the state to false to exit the loop
                     botResponse("Thank you for using CoCo your AI-powered cybersecurity assistant. Have a great day!");
@@ -54,7 +54,7 @@ namespace ST10461176_PROG6221_POE
             //ask question
             
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Please enter your question below or type 'exit' to terminate the program");
+            Console.WriteLine($"Please enter your question below or type 'exit', 'quit', or 'q' to terminate the program");
             Console.Write(user + " >> : ");
             Console.ForegroundColor = ConsoleColor.White;
             question = Console.ReadLine();
