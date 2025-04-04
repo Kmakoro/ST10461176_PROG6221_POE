@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +10,19 @@ namespace ST10461176_PROG6221_POE
     class CyberDictionary
     {
         //dictionary to check the keys based on topic
-        private Dictionary<string, int> keywords = new Dictionary<string, int>();
+        private ArrayList keywords = new ArrayList();
         //dictionary for password topic
-        private Dictionary<string, int> passwordsTopic = new Dictionary<string, int>();
+        private ArrayList passwordsTopic = new ArrayList();
         //dictionary for phishing topic
-        private Dictionary<string, int> phishingTopic = new Dictionary<string, int>();
+        private ArrayList phishingTopic = new ArrayList();
         //dictionary for safe browsing topic
-        private Dictionary<string, int> safeBrowsingTopic = new Dictionary<string, int>();
-
+        private ArrayList safeBrowsingTopic = new ArrayList();
+        //dictionary for virus topic
+        private ArrayList virusTopic = new ArrayList();
+        //dictionary for malware topic
+        private ArrayList malwareTopic = new ArrayList();
+        //dictionary for ransomware topic
+        private ArrayList ransomwareTopic = new ArrayList();
 
         public CyberDictionary()
         {
@@ -25,94 +31,192 @@ namespace ST10461176_PROG6221_POE
             password();
             phishing();
             safebrowsing();
+            virus();
+            malware();
+            ransomware();
         }
 
         //return method for password dictionary
-        public Dictionary<string,int> getPasswordDictionary()
+        public ArrayList getPasswordDictionary()
         {
             return this.passwordsTopic;
         }
         //return method for phishing dictionary
-        public Dictionary<string, int> getPhishingDictionary()
+        public ArrayList getPhishingDictionary()
         {
             return this.phishingTopic;
         }
         //return method for safe browsing dictionary
-        public Dictionary<string, int> getSafeBrosingDictionary()
+        public ArrayList getSafeBrosingDictionary()
         {
             return this.safeBrowsingTopic;
         }
         //return method for keywords dictionary
-        public Dictionary<string, int> getKeywords()
+        public ArrayList getKeywords()
         {
             return this.keywords;
+        }
+        //return method for virus dictionary
+        public ArrayList getVirusDictionary()
+        {
+            return this.virusTopic;
+        }
+        //return method for malware dictionary
+        public ArrayList getMalwareDictionary()
+        {
+            return this.malwareTopic;
+        }
+        //return method for ransomware dictionary
+        public ArrayList getRansomwareDictionary()
+        {
+            return this.ransomwareTopic;
         }
 
         //initialize the keywords
         private void initializeKeywords()
         {
-            keywords.Add($"what", 1);
-            keywords.Add($"is", 2);
-            keywords.Add($"tell", 3);
-            keywords.Add($"me", 4);
-            keywords.Add($"about", 5);
-            keywords.Add($"how", 6);
-            keywords.Add($"are", 7);
-            keywords.Add($"you", 8);
-            keywords.Add($"what's", 9);
-            keywords.Add($"your", 10);
-            keywords.Add($"purpose", 11);
-            keywords.Add($"can", 12);
-            keywords.Add($"i", 13);
-            keywords.Add($"ask", 14);
-            keywords.Add($"password", 15);
-            keywords.Add($"phishing", 16);
-            keywords.Add($"safe", 17);
-            keywords.Add($"browsing", 18);
-            keywords.Add($"safety?", 19);
-            keywords.Add($"safety", 20);
-            keywords.Add($"more", 21);
-            keywords.Add($"how are you?", 23);
-            keywords.Add($"what's your purpose?", 24);
-            keywords.Add($"what can i ask you about?", 25);
-            keywords.Add($"and", 26);
-            keywords.Add($"hello", 27);
+            keywords.Add($"what");
+            keywords.Add($"is");
+            keywords.Add($"tell");
+            keywords.Add($"me");
+            keywords.Add($"about");
+            keywords.Add($"how");
+            keywords.Add($"are");
+            keywords.Add($"you");
+            keywords.Add($"what's");
+            keywords.Add($"your");
+            keywords.Add($"purpose");
+            keywords.Add($"can");
+            keywords.Add($"i");
+            keywords.Add($"ask");
+            keywords.Add($"password");
+            keywords.Add($"phishing");
+            keywords.Add($"safe");
+            keywords.Add($"browsing");
+            keywords.Add($"safety?");
+            keywords.Add($"safety");
+            keywords.Add($"more");
+            keywords.Add($"how are you?");
+            keywords.Add($"what's your purpose?");
+            keywords.Add($"what can i ask you about?");
+            keywords.Add($"and");
+            keywords.Add($"hello");
+            keywords.Add($"hi");
+            keywords.Add($"hey");
+            keywords.Add($"secure");
+            keywords.Add($"difference");
+            keywords.Add($"unsafe");
+            keywords.Add($"browser");
+            keywords.Add($"site");
+            keywords.Add($"malware");
+            keywords.Add($"ransomware");
+            keywords.Add($"virus");
+            keywords.Add($"a");
+            keywords.Add($"spread");
+            keywords.Add($"warns");
+            keywords.Add("if");
+            keywords.Add("to");
+            keywords.Add("against");
+            keywords.Add("the");
+            keywords.Add("of");
+            keywords.Add("and");
+            keywords.Add("for");
+            keywords.Add("on");
+            keywords.Add("in");
+            keywords.Add("at");
+            keywords.Add("with");
+            keywords.Add("by");
+            keywords.Add("from");
+            keywords.Add("that");
+            keywords.Add("this");
+            keywords.Add("it");
+            keywords.Add("as");
+            keywords.Add("be");
+            keywords.Add("are");
+            keywords.Add("not");
+            keywords.Add("do");
+            keywords.Add("does");
+            keywords.Add("any");
+            keywords.Add("all");
+            keywords.Add("should");
         }
         //initialize the password topic
         private void password()
         {
-            passwordsTopic.Add($"Create passwords that are at least 12-16 characters long and include a mix of uppercase letters, lowercase letters, numbers, and special characters (e.g., !, @, #, $).", 1);
-            passwordsTopic.Add($"Reusing the same password across multiple accounts is risky. If one account is compromised, hackers can access all your other accounts.",2);
-            passwordsTopic.Add($"Use unique passwords for every account, especially for sensitive accounts like email, banking, and social media", 3);
-            passwordsTopic.Add($"Adding an extra layer of security, such as a one-time code sent to your phone or an authenticator app, makes it much harder for attackers to access your accounts, even if they have your password.", 4);
-            passwordsTopic.Add($"Password managers securely store and generate strong, unique passwords for all your accounts. You only need to remember one master password to access them.", 5);
-            passwordsTopic.Add($"Change your passwords periodically, especially for critical accounts. If you suspect a breach or notice unusual activity, update your password immediately.", 6);
-            passwordsTopic.Add($"Avoid Dictionary Words: Hackers use tools that can easily guess passwords based on common words or phrases.", 7);
-            passwordsTopic.Add($"Hackers often trick people into revealing their passwords through fake emails, websites, or messages. Always verify the sender's identity and avoid clicking on suspicious links.", 8);
+            passwordsTopic.Add($"Create passwords that are at least 12-16 characters long and include a mix of uppercase letters, lowercase letters, numbers, and special characters (e.g., !, @, #, $).");
+            passwordsTopic.Add($"Reusing the same password across multiple accounts is risky. If one account is compromised, hackers can access all your other accounts.");
+            passwordsTopic.Add($"Use unique passwords for every account, especially for sensitive accounts like email, banking, and social media");
+            passwordsTopic.Add($"Adding an extra layer of security, such as a one-time code sent to your phone or an authenticator app, makes it much harder for attackers to access your accounts, even if they have your password.");
+            passwordsTopic.Add($"Password managers securely store and generate strong, unique passwords for all your accounts. You only need to remember one master password to access them.");
+            passwordsTopic.Add($"Change your passwords periodically, especially for critical accounts. If you suspect a breach or notice unusual activity, update your password immediately.");
+            passwordsTopic.Add($"Avoid Dictionary Words: Hackers use tools that can easily guess passwords based on common words or phrases.");
+            passwordsTopic.Add($"Hackers often trick people into revealing their passwords through fake emails, websites, or messages. Always verify the sender's identity and avoid clicking on suspicious links.");
         }
         //initialize the phishing topic
         private void phishing()
         {
-            phishingTopic.Add($"Phishing attacks trick victims into revealing sensitive information by pretending to be a trusted entity, such as a bank, government agency, or popular website.", 1);
-            phishingTopic.Add($"Suspicious Sender Addresses: Check the email address carefully—phishing emails often use misspelled or fake domains (e.g., support@amaz0n.com).", 2);
-            phishingTopic.Add($"Unexpected Attachments or Links: Be cautious of unsolicited emails with attachments or links, especially if they claim to be invoices, receipts, or important documents", 3);
-            phishingTopic.Add($"Phishing attacks often direct you to fake websites that look identical to legitimate ones (e.g., a fake banking login page).", 4);
-            phishingTopic.Add($"If you fall for a phishing scam, attackers can steal your personal information, access your bank accounts, or even commit identity theft.", 5);
-            phishingTopic.Add($"Phishing is also a common way for hackers to install malware or ransomware on your device.", 6);
-            phishingTopic.Add($"Phishing is Constantly Evolving: Attackers are using more sophisticated techniques, such as AI-generated emails and deepfake voice calls, to make their scams harder to detect.", 7);
-            phishingTopic.Add($"Report Phishing Attempts: If you receive a phishing email, report it to your email provider or the organization being impersonated. Many companies have dedicated channels for reporting phishing.", 8);
+            phishingTopic.Add($"Phishing attacks trick victims into revealing sensitive information by pretending to be a trusted entity, such as a bank, government agency, or popular website.");
+            phishingTopic.Add($"Suspicious Sender Addresses: Check the email address carefully—phishing emails often use misspelled or fake domains (e.g., support@amaz0n.com).");
+            phishingTopic.Add($"Unexpected Attachments or Links: Be cautious of unsolicited emails with attachments or links, especially if they claim to be invoices, receipts, or important documents");
+            phishingTopic.Add($"Phishing attacks often direct you to fake websites that look identical to legitimate ones (e.g., a fake banking login page).");
+            phishingTopic.Add($"If you fall for a phishing scam, attackers can steal your personal information, access your bank accounts, or even commit identity theft.");
+            phishingTopic.Add($"Phishing is also a common way for hackers to install malware or ransomware on your device.");
+            phishingTopic.Add($"Phishing is Constantly Evolving: Attackers are using more sophisticated techniques, such as AI-generated emails and deepfake voice calls, to make their scams harder to detect.");
+            phishingTopic.Add($"Report Phishing Attempts: If you receive a phishing email, report it to your email provider or the organization being impersonated. Many companies have dedicated channels for reporting phishing.");
         }
         //initialize the safe browsing topic
         private void safebrowsing()
         {
-            safeBrowsingTopic.Add($"Always ensure the websites you visit use HTTPS (Hypertext Transfer Protocol Secure) instead of HTTP. HTTPS encrypts data between your browser and the website, protecting it from interception.", 1);
-            safeBrowsingTopic.Add($"Regularly update your web browser, operating system, and plugins/extensions to patch security vulnerabilities.", 2);
-            safeBrowsingTopic.Add($"Be cautious of links in emails, social media messages, or pop-up ads, especially if they seem too good to be true or create a sense of urgency.", 3);
-            safeBrowsingTopic.Add($"Hover over links to see the actual URL before clicking, and avoid visiting untrusted or unfamiliar websites.", 4);
-            safeBrowsingTopic.Add($"Install and maintain antivirus software to detect and block malware, phishing attempts, and other online threats.", 5);
-            safeBrowsingTopic.Add($"Enable a firewall to monitor and control incoming and outgoing network traffic.", 6);
-            safeBrowsingTopic.Add($"Only download files or software from trusted sources, such as official websites or app stores.", 7);
-            safeBrowsingTopic.Add($"Avoid downloading pirated software or media, as they often contain malware.", 8);
+            safeBrowsingTopic.Add($"Always ensure the websites you visit use HTTPS (Hypertext Transfer Protocol Secure) instead of HTTP. HTTPS encrypts data between your browser and the website, protecting it from interception.");
+            safeBrowsingTopic.Add($"Regularly update your web browser, operating system, and plugins/extensions to patch security vulnerabilities.");
+            safeBrowsingTopic.Add($"Be cautious of links in emails, social media messages, or pop-up ads, especially if they seem too good to be true or create a sense of urgency.");
+            safeBrowsingTopic.Add($"Hover over links to see the actual URL before clicking, and avoid visiting untrusted or unfamiliar websites.");
+            safeBrowsingTopic.Add($"Install and maintain antivirus software to detect and block malware, phishing attempts, and other online threats.");
+            safeBrowsingTopic.Add($"Enable a firewall to monitor and control incoming and outgoing network traffic.");
+            safeBrowsingTopic.Add($"Only download files or software from trusted sources, such as official websites or app stores.");
+            safeBrowsingTopic.Add($"Avoid downloading pirated software or media, as they often contain malware.");
+        }
+
+        private void virus()
+        {
+            // Initialize the virus topic dictionary
+            // Add virus-related information to the dictionary
+            virusTopic.Add($"A computer virus is a malicious program that attaches itself to legitimate software or files, spreading from one computer to another.");
+            virusTopic.Add($"Viruses can corrupt or delete files, steal personal information, and disrupt system performance.");
+            virusTopic.Add($"Viruses often spread through infected email attachments, downloads from untrusted websites, or removable media like USB drives.");
+            virusTopic.Add($"To protect against viruses, use reputable antivirus software, keep your operating system and applications updated, and avoid clicking on suspicious links or downloading unknown files.");
+            virusTopic.Add($"Regularly back up your important files to an external drive or cloud storage to prevent data loss in case of a virus infection.");
+            virusTopic.Add($"Be cautious when using public Wi-Fi networks, as they can be breeding grounds for malware and viruses.");
+            virusTopic.Add($"Educate yourself about common virus types, such as file infectors, macro viruses, and boot sector viruses, to better understand the risks.");
+            virusTopic.Add($"Always scan external drives and downloads with antivirus software before opening them.");
+        }
+
+        private void malware()
+        {
+            // Initialize the malware topic dictionary
+            // Add malware-related information to the dictionary
+            malwareTopic.Add("Malware is a broad term that refers to any malicious software designed to harm, exploit, or otherwise compromise a computer system.");
+            malwareTopic.Add("Common types of malware include viruses, worms, Trojans, ransomware, spyware, adware, and rootkits.");
+            malwareTopic.Add("Malware can be spread through infected email attachments, malicious downloads, compromised websites, and removable media like USB drives.");
+            malwareTopic.Add("To protect against malware, use reputable antivirus software, keep your operating system and applications updated, and avoid clicking on suspicious links or downloading unknown files.");
+            malwareTopic.Add("Be cautious when using public Wi-Fi networks, as they can be breeding grounds for malware and other cyber threats.");
+            malwareTopic.Add("Regularly back up your important files to an external drive or cloud storage to prevent data loss in case of a malware infection.");
+            malwareTopic.Add("Fileless malware avoids detection – Instead of relying on executable files, it runs in memory, making it harder for traditional antivirus to detect.");
+            malwareTopic.Add("Spyware steals data silently – Keyloggers and screen recorders can capture passwords, credit card details, and browsing habits.");
+        }
+
+        private void ransomware()
+        {
+            // Initialize the ransomware topic dictionary
+            // Add ransomware-related information to the dictionary
+            ransomwareTopic.Add("Ransomware is a type of malware that encrypts a victim's files, rendering them inaccessible until a ransom is paid to the attacker.");
+            ransomwareTopic.Add("Ransomware often spreads through phishing emails, malicious downloads, or exploiting vulnerabilities in software.");
+            ransomwareTopic.Add("To protect against ransomware, regularly back up your important files to an external drive or cloud storage, and keep your operating system and applications updated.");
+            ransomwareTopic.Add("Be cautious when clicking on links or downloading attachments from unknown sources, as they may contain ransomware.");
+            ransomwareTopic.Add("Use reputable antivirus software that includes ransomware protection features.");
+            ransomwareTopic.Add("Educate yourself about common ransomware tactics, such as fake software updates or urgent security alerts, to avoid falling victim.");
+            ransomwareTopic.Add("Ransomware attacks can target individuals, businesses, and even critical infrastructure, making it a significant threat to cybersecurity.");
+            ransomwareTopic.Add("Paying the ransom does not guarantee that you will regain access to your files, and it may encourage further attacks.");
         }
     }
 }

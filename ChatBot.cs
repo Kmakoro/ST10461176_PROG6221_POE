@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -69,7 +70,8 @@ namespace ST10461176_PROG6221_POE
             Boolean virusdeteDetected = false;
             Boolean malwareDetected = false;
             Boolean ransomwareDetected = false;
-            string[] words;
+            
+            string[] words;//array for the split function to split words
 
             //begin working if the string is not empty
             if(question != string.Empty)
@@ -82,7 +84,7 @@ namespace ST10461176_PROG6221_POE
                 for(int counter = 0; counter < words.Length; counter++)
                 {
                     //check if the word is in the dictionary
-                    if (responseDictionary.getKeywords().ContainsKey(words[counter]))
+                    if (responseDictionary.getKeywords().Contains(words[counter]))
                     {
                         correctwords++;
                     }
@@ -248,31 +250,31 @@ namespace ST10461176_PROG6221_POE
         }
 
         //function to retrieve 3 random reponses based on Topic
-        private string Response(Dictionary<string, int> Topic, string optional = null)
+        private string Response(ArrayList Topic, string optional = null)
         {
             //local string variable to hold the response
             string response = string.Empty;
             //create a local random object
             Random random = new Random();
             //convert dictionary keys to a list for easy random access
-            List<string> randomkeys = Topic.Keys.ToList();
-            
+            //List<string> randomkeys = Topic.Keys.ToList();
+
+            string[] arrayTopic = (string[])Topic.ToArray(typeof(string));
             //randomly display 3 values from the dictionary
-            for(int counter = 0; counter < 3; counter++)
+            for (int counter = 0; counter < 3; counter++)
             {
                 //generate a random index or number
-                int index = random.Next(1,randomkeys.Count);
-                //get the key at the random index
-                string key = randomkeys[index];
+                int index = random.Next(arrayTopic.Length);
+
                 //get the corresponding value pair at index
-                int value = Topic[key];
+                string message = arrayTopic[index];
                 //concatinate or join the responses on a new line
-                response = response +'\n'+ String.Concat(( counter + 1), ". ", key );
+                response = response + '\n' + String.Concat((counter + 1), ". ", message);
             }
             //return the response should there be an optional value
             if (optional != null)
             {//text formatting and underling the optional value
-                return string.Concat(optional,"\n","\t\t\t", new string('-', optional.Length), "\n",response);
+                return string.Concat(optional, "\n", "\t\t\t", new string('-', optional.Length), "\n", response);
             }
             //return the response
             return response;

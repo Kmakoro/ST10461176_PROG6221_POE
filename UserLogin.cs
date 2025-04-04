@@ -18,7 +18,8 @@ namespace ST10461176_PROG6221_POE
             //using the string function to combine strings
             Console.ForegroundColor = ConsoleColor.Green;
             ChatBot.botResponse(String.Concat("Hello ", this.username, " weclome to CoCo your AI-powered cybersecurity assistant, " +
-                "Whether you’re defending against threats, securing your systems, or just looking for best practices, I’m here to help you stay safe in the digital world."));
+                "Whether you’re defending against threats, securing your systems, or just looking for best practices, I’m here to help you stay safe in the digital world. Topics include Password safety," +
+                "Phishing, Ransomware, Malware, Virus and Computer Safety"));
             
         }
         //getter
