@@ -20,6 +20,8 @@ namespace ST10461176_PROG6221_POE
         private List<string> malwareTopic = new List<string>();
         //dictionary for ransomware topic
         private List<string> ransomwareTopic = new List<string>();
+        //dictionary for sentiment keywords
+        public Dictionary<string, string> sentimentKeyword = new Dictionary<string, string>();
 
         public CyberDictionary()
         {
@@ -31,6 +33,7 @@ namespace ST10461176_PROG6221_POE
             virus();
             malware();
             ransomware();
+            sentiment();
         }
 
         //return method for password dictionary
@@ -136,6 +139,16 @@ namespace ST10461176_PROG6221_POE
             keywords.Add("any");
             keywords.Add("all");
             keywords.Add("should");
+            keywords.Add("can");
+            keywords.Add("could");
+            keywords.Add("tip");
+            keywords.Add("tips");
+            keywords.Add("advice");
+            keywords.Add("am");
+            keywords.Add("i'm");
+            keywords.Add("you");
+            keywords.Add("my");
+            keywords.Add("worried");
         }
         //initialize the password topic
         private void password()
@@ -214,6 +227,20 @@ namespace ST10461176_PROG6221_POE
             ransomwareTopic.Add("Educate yourself about common ransomware tactics, such as fake software updates or urgent security alerts, to avoid falling victim.");
             ransomwareTopic.Add("Ransomware attacks can target individuals, businesses, and even critical infrastructure, making it a significant threat to cybersecurity.");
             ransomwareTopic.Add("Paying the ransom does not guarantee that you will regain access to your files, and it may encourage further attacks.");
+        }
+
+        private void sentiment()
+        {
+            // Initialize the sentiment keyword dictionary
+            // Add sentiment-related information to the dictionary
+            sentimentKeyword.Add("happy", "I so appreciate you saying that!\n");
+            sentimentKeyword.Add("sad", "I’m sorry to hear that. \nThat sounds really difficult.\n");
+            sentimentKeyword.Add("angry", "I know you are really angry right now, but you need to take some deep breathes and think rationally. \nI understand  where you are coming from.\n");
+            sentimentKeyword.Add("excited", "I’m so happy for you!\n");
+            sentimentKeyword.Add("frustrated", "Take a deep breath and try to calm down. Is there anything I can do to help? \nLet's find a solution together. \nRemember to be patient with yourself. \nIt's okay to feel frustrated, but don't let it consume you. \nTake a break and come back to it later.\nLet's focus on what we can control.\n");
+            sentimentKeyword.Add("worried", "It’s okay to feel anxious, it doesn’t define who you are.\nYou’re stronger than you think, and you’ll get through this.\n");
+            sentimentKeyword.Add("curious", "Well, there are several words that perfectly capture the essence of curiosity: inquisitive, eager, adventurous, probing, and open-minded. \nThese words embody the spirit of curiosity, driving us to uncover new ideas and embrace the wonders of the unknown\n");
+            sentimentKeyword.Add("scared", "This feeling will pass; you will get through this.\nTake a deep breath and exhale slowly. Just focus on your breathing.\n");
         }
     }
 }

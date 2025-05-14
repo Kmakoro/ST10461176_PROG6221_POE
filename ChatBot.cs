@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace ST10461176_PROG6221_POE
@@ -19,7 +20,7 @@ namespace ST10461176_PROG6221_POE
         public ChatBot(string user)
         {
             this.user = user;
-            this.responseDictionary = new CyberDictionary();
+            responseDictionary = new CyberDictionary();
             
             
             //keep the state true while the chatbot is active
@@ -68,6 +69,8 @@ namespace ST10461176_PROG6221_POE
             Boolean malwareDetected = false;
             Boolean ransomwareDetected = false;
             
+
+            //create a local string variable to hold the words
             string[] words;//array for the split function to split words
 
             //begin working if the string is not empty
@@ -157,13 +160,12 @@ namespace ST10461176_PROG6221_POE
                             botResponse("You can ask me about passwords, phishing, safe browsing, and more. Just type your question, and I'll do my best to help!");
                             break;
                         }
-
                         //provide a response to a user should there be a question without direct meaning
-                       /* if(!phishingDetected && !passworddetected && !safebrowsingDetected)
-                        {
-                            botResponse("Remember you can ask me about anything related to cyber security examples include things like password, phishing and safe browsing!", true);
-                            break;
-                        }*/
+                        /* if(!phishingDetected && !passworddetected && !safebrowsingDetected)
+                         {
+                             botResponse("Remember you can ask me about anything related to cyber security examples include things like password, phishing and safe browsing!", true);
+                             break;
+                         }*/
                     }
 
                 }
@@ -180,7 +182,7 @@ namespace ST10461176_PROG6221_POE
                 {
                     
                     //give response based on password
-                    botResponse(Response(responseDictionary.getPasswordDictionary(),"\tPassword"));
+                    botResponse(checkSentiment(question)+(Response(responseDictionary.getPasswordDictionary(),"\tPassword")));
                   
 
                 }
@@ -189,7 +191,7 @@ namespace ST10461176_PROG6221_POE
                 {
                     
                     //give response based on phishing
-                    botResponse(Response(responseDictionary.getPhishingDictionary(),"\tPhishing"));
+                    botResponse(checkSentiment(question) + (Response(responseDictionary.getPhishingDictionary(),"\tPhishing")));
                     
                     
                 }
@@ -198,23 +200,23 @@ namespace ST10461176_PROG6221_POE
                 {
 
                     //give response based on safe browsing
-                    botResponse(Response(responseDictionary.getSafeBrosingDictionary(),"\tSafe Browsing"));
+                    botResponse(checkSentiment(question) + (Response(responseDictionary.getSafeBrosingDictionary(), "\tSafe Browsing")));
 
                 }
                 if(virusdeteDetected)
                 {
                     //give response based on virus
-                    botResponse(Response(responseDictionary.getVirusDictionary(), "\tVirus"));
+                    botResponse(checkSentiment(question) + (Response(responseDictionary.getVirusDictionary(), "\tVirus")));
                 }
                 if (malwareDetected)
                 {
                     //give response based on malware
-                    botResponse(Response(responseDictionary.getMalwareDictionary(), "\tMalware"));
+                    botResponse(checkSentiment(question) + (Response(responseDictionary.getMalwareDictionary(), "\tMalware")));
                 }
                 if (ransomwareDetected)
                 {
                     //give response based on ransomware
-                    botResponse(Response(responseDictionary.getRansomwareDictionary(), "\tRansomware"));
+                    botResponse(checkSentiment(question) + (Response(responseDictionary.getRansomwareDictionary(), "\tRansomware")));
                 }
 
             }
@@ -227,7 +229,53 @@ namespace ST10461176_PROG6221_POE
             }
         }
 
-       
+        //method to check sentiment of the user
+        private string checkSentiment(string question)
+        {
+            //create a local string variable to hold the words
+            string[] words;//array for the split function to split words
+            //split the question into words
+            words = question.Split(' ');
+            //loop through the words or the sentence
+            for (int index = 0; index < words.Length; index++)
+            {
+                if (words[index].Contains("happy"))
+                {//using lambda expression
+                    return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "happy").Value;
+                }
+                if (words[index].Contains("sad"))
+                {
+                    return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "sad").Value;
+                }
+                if (words[index].Contains("excited"))
+                {
+                    return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "excited").Value;
+                }
+                if (words[index].Contains("worried"))
+                {
+                    return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "worried").Value;
+                }
+                if (words[index].Contains("frustrated"))
+                {
+                    return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "frustrated").Value;
+                }
+                if (words[index].Contains("angry"))
+                {
+                    return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "angry").Value;
+                }
+                if (words[index].Contains("scared"))
+                {
+                    return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "scared").Value;
+                }
+                if (words[index].Contains("curious"))
+                {
+                    return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "curious").Value;
+                }
+            }
+            return "";
+        }
+
+
 
         //function to display the bot response
         public static void botResponse(string response, bool error = false)
