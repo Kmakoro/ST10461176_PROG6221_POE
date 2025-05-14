@@ -269,43 +269,82 @@ namespace ST10461176_PROG6221_POE
                 //if password has been detected then proceed
                 if (passworddetected)
                 {
-                    
+
                     //give response based on password
+                    if (programLoopCounter == 1)
+                    {
+                        //give response based on password
+                        botResponse("Thank you I will make sure to remember that you are asking about passwords");
+                    }
+                    
                     botResponse((Response(responseDictionary.getPasswordDictionary(),"\tPassword")) + "\n"+ checkSentiment(question) );
-                  
+                    
 
                 }
                 //if phishing has been detected then proceed
                 if (phishingDetected)
                 {
-                    
+
                     //give response based on phishing
+                   
+                    
                     botResponse( (Response(responseDictionary.getPhishingDictionary(),"\tPhishing")) + "\n" + checkSentiment(question));
-                    
-                    
+                    if (programLoopCounter == 1)
+                    {
+                        //give response based on phishing
+                        botResponse("Thank you I will make sure to remember that you are asking about phishing");
+                    }
+
                 }
                 //if safe browsing has been detected then proceed
                 if(safebrowsingDetected)
                 {
 
                     //give response based on safe browsing
+                   
+                    
                     botResponse((Response(responseDictionary.getSafeBrosingDictionary(), "\tSafe Browsing")) + "\n" + checkSentiment(question));
+                    if (programLoopCounter == 1)
+                    {
+                        //give response based on safe browsing
+                        botResponse("Thank you I will make sure to remember that you are asking about safe browsing");
+                    }
 
                 }
                 if(virusdeteDetected)
                 {
                     //give response based on virus
+                   
+                    
                     botResponse((Response(responseDictionary.getVirusDictionary(), "\tVirus")) + "\n" + checkSentiment(question));
+                    if (programLoopCounter == 1)
+                    {
+                        //give response based on virus
+                        botResponse("Thank you I will make sure to remember that you are asking about virus");
+                    }
                 }
                 if (malwareDetected)
                 {
                     //give response based on malware
+                    
+                    
                     botResponse( (Response(responseDictionary.getMalwareDictionary(), "\tMalware")) + "\n" + checkSentiment(question));
+                    if (programLoopCounter == 1)
+                    {
+                        botResponse("Thank you I will make sure to remember that you are asking about malware");
+                    }
                 }
                 if (ransomwareDetected)
                 {
                     //give response based on ransomware
+                    
+                    
                     botResponse( (Response(responseDictionary.getRansomwareDictionary(), "\tRansomware")) + "\n" + checkSentiment(question));
+                    if (programLoopCounter == 1)
+                    {
+                        //give response based on ransomware
+                        botResponse("Thank you I will make sure to remember that you are asking about ransomware");
+                    }
                 }
 
             }

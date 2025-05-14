@@ -1,14 +1,15 @@
 ChatBot >> : 	Welcome to CoCo your AI-powered cybersecurity assistant
 ChatBot >> : 	Hello karabo weclome to CoCo your AI-powered cybersecurity assistant, Whether you’re defending against threats, securing your systems, or just looking for best practices, I’m here to help you stay safe in the digital world. Topics include Password safety,Phishing, Ransomware, Malware, Virus and Computer Safety
-karabo >> : tell me about password i am scared
-ChatBot >> : 		Password
+karabo >> : i am scared tell me about phishing
+ChatBot >> : 		Phishing
 			---------
 
-1. Change your passwords periodically, especially for critical accounts. If you suspect a breach or notice unusual activity, update your password immediately.
-2. Create passwords that are at least 12-16 characters long and include a mix of uppercase letters, lowercase letters, numbers, and special characters (e.g., !, @, #, $).
-3. Change your passwords periodically, especially for critical accounts. If you suspect a breach or notice unusual activity, update your password immediately.
+1. Unexpected Attachments or Links: Be cautious of unsolicited emails with attachments or links, especially if they claim to be invoices, receipts, or important documents
+2. Phishing is also a common way for hackers to install malware or ransomware on your device.
+3. If you fall for a phishing scam, attackers can steal your personal information, access your bank accounts, or even commit identity theft.
 This feeling will pass; you will get through this.
 Take a deep breath and exhale slowly. Just focus on your breathing.
 
-ChatBot >> : 	Feel free to ask me more about passwords
+ChatBot >> : 	Thank you I will make sure to remember that you are asking about phishing
+ChatBot >> : 	Feel free to ask me more about phishing
 karabo >> : exit
