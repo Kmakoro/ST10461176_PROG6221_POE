@@ -7,13 +7,13 @@ namespace ST10461176_PROG6221_POE
     public class MemoryRecall
     {
 
-       string username = string.Empty; //create an empty string variable
+        string username = string.Empty; //create an empty string variable
         public bool fileExists = false; //create a boolean variable to check if the file exists 
-        public MemoryRecall(string username) 
+        public MemoryRecall(string username)
         { //beginng of contructor
             this.username = username;
             check_file();
-          
+
         }//end of constructor
 
         //Since AppDomain as global gives an error of static
@@ -26,7 +26,7 @@ namespace ST10461176_PROG6221_POE
             //so its bin\\Debug\\ inside the "" no space
             string new_path = fullpath.Replace("bin\\Debug\\", "");
             //now combine the path of new_path and the txt file
-            string path = Path.Combine(new_path, username+".txt");
+            string path = Path.Combine(new_path, username + ".txt");
 
             return path;
         }//end of return path method
@@ -61,7 +61,7 @@ namespace ST10461176_PROG6221_POE
                 //display appropriate error message
                 Console.WriteLine(ex.Message);
             }
-           
+
 
         }//end of method check_file
 
@@ -106,7 +106,7 @@ namespace ST10461176_PROG6221_POE
                 //display appropriate error message
                 Console.WriteLine(ex.Message);
             }
-           
+
         }//end of save memory method
 
         //Now you  are done with the File Memory class

@@ -52,8 +52,8 @@ namespace ST10461176_PROG6221_POE
                                 Console.Write(ascii);
                                 break;
                         }
-                        
-                          
+
+
                     }
                     //new line
                     Console.WriteLine();
@@ -62,7 +62,7 @@ namespace ST10461176_PROG6221_POE
                 ChatBot.botResponse("Welcome to CoCo your AI-powered cybersecurity assistant");
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //Display appropriate error message
                 Console.WriteLine(ex.Message);

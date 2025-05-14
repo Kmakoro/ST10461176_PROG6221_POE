@@ -18,7 +18,7 @@ namespace ST10461176_PROG6221_POE
 
         int programLoopCounter = 0;
 
-       static List<string> save_Data = new List<string>();
+        static List<string> save_Data = new List<string>();
 
         //username 
         private string user = string.Empty;
@@ -36,7 +36,7 @@ namespace ST10461176_PROG6221_POE
 
             if (memoryRecall.fileExists)
             {
-               displayMemory(memoryRecall.return_memory());
+                displayMemory(memoryRecall.return_memory());
             }
 
             //keep the state true while the chatbot is active
@@ -48,7 +48,7 @@ namespace ST10461176_PROG6221_POE
                 askquestion();
                 programLoopCounter++;
                 //check if the user wants to exit
-                if (question.Equals("exit")||question.Equals("quit") || question.Equals("q"))
+                if (question.Equals("exit") || question.Equals("quit") || question.Equals("q"))
                 {
                     //set the state to false to exit the loop
                     memoryRecall.save_memory(save_Data);
@@ -68,7 +68,7 @@ namespace ST10461176_PROG6221_POE
         private void askquestion()
         {
             //ask question
-            
+
             Console.ForegroundColor = ConsoleColor.Green;
             if (programLoopCounter >= 4)
             {
@@ -107,32 +107,32 @@ namespace ST10461176_PROG6221_POE
             if (password)
             {
                 botResponse("Feel free to ask me more about passwords");
-               
+
             }
             if (phishing)
             {
                 botResponse("Feel free to ask me more about phishing");
-               
+
             }
             if (safebrowsing)
             {
                 botResponse("Feel free to ask me more about safe browsing");
-                
+
             }
             if (virus)
             {
                 botResponse("Feel free to ask me more about viruses");
-                
+
             }
             if (malware)
             {
                 botResponse("Feel free to ask me more about malware");
-                
+
             }
             if (ransomware)
             {
                 botResponse("Free to ask me more about ransomware");
-                
+
             }
             //display the question
             Console.WriteLine($"Please enter your question below or type 'exit', 'quit', or 'q' to terminate the program");
@@ -157,14 +157,14 @@ namespace ST10461176_PROG6221_POE
             string[] words;//array for the split function to split words
 
             //begin working if the string is not empty
-            if(question != string.Empty)
+            if (question != string.Empty)
             {
-                
+
                 words = question.Split(' ');
                 int correctwords = 0;
                 int incorrectwords = 0;
                 //loop to check if the question contains correct words in the dictionary if not then the user will have to be prompted again
-                for(int counter = 0; counter < words.Length; counter++)
+                for (int counter = 0; counter < words.Length; counter++)
                 {
                     //check if the word is in the dictionary
                     if (responseDictionary.getKeywords().Contains(words[counter]))
@@ -179,15 +179,15 @@ namespace ST10461176_PROG6221_POE
                 }//end of loop
 
                 //check if no incorrect keywords were entered
-                if(incorrectwords == 0)
+                if (incorrectwords == 0)
                 {
                     //loop through the words or the sentence
-                    for(int index = 0; index < words.Length; index++)
+                    for (int index = 0; index < words.Length; index++)
                     {
                         //check if the user is asking about passwords
                         if (words[index].Contains("password"))
                         {
-                            
+
                             passworddetected = true;
                             password = true;
 
@@ -195,7 +195,7 @@ namespace ST10461176_PROG6221_POE
                         //check if the user is asking about phishing
                         if (words[index].Contains("phishing"))
                         {
-                            
+
                             phishingDetected = true;
                             phishing = true;
                         }
@@ -219,7 +219,8 @@ namespace ST10461176_PROG6221_POE
                             malware = true;
                         }
                         //check if the user is asking about ransomware
-                        if (words[index].Contains("ransomware")){
+                        if (words[index].Contains("ransomware"))
+                        {
                             ransomwareDetected = true;
                             ransomware = true;
                         }
@@ -240,7 +241,7 @@ namespace ST10461176_PROG6221_POE
                         //provide a repsonse to the user to know the purpose of the chatbot
                         if (question.Contains("what's your purpose"))
                         {
-                           botResponse("I'm here to help you with any questions you have about cybersecurity. Feel free to ask me anything!");
+                            botResponse("I'm here to help you with any questions you have about cybersecurity. Feel free to ask me anything!");
                             break;
                         }
                         //provaide a response for the user to know what they can ask the chatbot
@@ -262,88 +263,77 @@ namespace ST10461176_PROG6221_POE
                 else
                 {
                     //give error message for not understanding the question of the user or words used not in the dictionary
-                   botResponse("I didn't quite understand that. Could you rephrase? Remember to as me about topics related to cyber security", true);
-                   
-                }
+                    botResponse("I didn't quite understand that. Could you rephrase? Remember to as me about topics related to cyber security", true);
 
+                }
                 //if password has been detected then proceed
                 if (passworddetected)
                 {
-
-                    
-                    
-                    botResponse((Response(responseDictionary.getPasswordDictionary(),"\tPassword")) + "\n"+ checkSentiment(question) );
+                    botResponse((Response(responseDictionary.getPasswordDictionary(), "\tPassword")) + "\n" + checkSentiment(question));
                     //give response based on password
                     if (programLoopCounter == 1)
                     {
                         //give response based on password
                         botResponse("Thank you I will make sure to remember that you are asking about passwords");
+                        password = true;
                     }
-
                 }
                 //if phishing has been detected then proceed
                 if (phishingDetected)
                 {
-
                     //give response based on phishing
-                   
-                    
-                    botResponse( (Response(responseDictionary.getPhishingDictionary(),"\tPhishing")) + "\n" + checkSentiment(question));
+                    botResponse((Response(responseDictionary.getPhishingDictionary(), "\tPhishing")) + "\n" + checkSentiment(question));
                     if (programLoopCounter == 1)
                     {
                         //give response based on phishing
                         botResponse("Thank you I will make sure to remember that you are asking about phishing");
+                        phishing = true;
                     }
 
                 }
                 //if safe browsing has been detected then proceed
-                if(safebrowsingDetected)
+                if (safebrowsingDetected)
                 {
-
                     //give response based on safe browsing
-                   
-                    
                     botResponse((Response(responseDictionary.getSafeBrosingDictionary(), "\tSafe Browsing")) + "\n" + checkSentiment(question));
                     if (programLoopCounter == 1)
                     {
                         //give response based on safe browsing
                         botResponse("Thank you I will make sure to remember that you are asking about safe browsing");
+                        safebrowsing = true;
                     }
 
                 }
-                if(virusdeteDetected)
+                if (virusdeteDetected)
                 {
                     //give response based on virus
-                   
-                    
                     botResponse((Response(responseDictionary.getVirusDictionary(), "\tVirus")) + "\n" + checkSentiment(question));
                     if (programLoopCounter == 1)
                     {
                         //give response based on virus
                         botResponse("Thank you I will make sure to remember that you are asking about virus");
+                        virus = true;
                     }
                 }
                 if (malwareDetected)
                 {
                     //give response based on malware
-                    
-                    
-                    botResponse( (Response(responseDictionary.getMalwareDictionary(), "\tMalware")) + "\n" + checkSentiment(question));
+                    botResponse((Response(responseDictionary.getMalwareDictionary(), "\tMalware")) + "\n" + checkSentiment(question));
                     if (programLoopCounter == 1)
                     {
                         botResponse("Thank you I will make sure to remember that you are asking about malware");
+                        malware = true;
                     }
                 }
                 if (ransomwareDetected)
                 {
                     //give response based on ransomware
-                    
-                    
-                    botResponse( (Response(responseDictionary.getRansomwareDictionary(), "\tRansomware")) + "\n" + checkSentiment(question));
+                    botResponse((Response(responseDictionary.getRansomwareDictionary(), "\tRansomware")) + "\n" + checkSentiment(question));
                     if (programLoopCounter == 1)
                     {
                         //give response based on ransomware
                         botResponse("Thank you I will make sure to remember that you are asking about ransomware");
+                        ransomware = true;
                     }
                 }
 
@@ -352,8 +342,8 @@ namespace ST10461176_PROG6221_POE
             else
             {
                 //give error message for not understanding the question of the user or words used not in the dictionary
-                botResponse("Please type a question related to cyber security or type exit to terminate the program",true);
-              
+                botResponse("Please type a question related to cyber security or type exit to terminate the program", true);
+
             }
         }
 
@@ -416,7 +406,7 @@ namespace ST10461176_PROG6221_POE
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write(bot);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(string.Concat("\t",response));
+                Console.WriteLine(string.Concat("\t", response));
                 save_Data.Add(bot + "\t" + response);
             }
             //display the response
@@ -426,7 +416,7 @@ namespace ST10461176_PROG6221_POE
                 Console.Write(bot);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("\t");
-                for(int counter = 0; counter < response.Length; counter++)
+                for (int counter = 0; counter < response.Length; counter++)
                 {
                     Console.Write(response[counter]);
                     Thread.Sleep(20);
@@ -434,19 +424,19 @@ namespace ST10461176_PROG6221_POE
                 save_Data.Add(bot + "\t" + response);
                 //Console.WriteLine(string.Concat("\t", response));
                 Console.WriteLine();
-               
+
             }
-                
+
         }
 
         private void displayMemory(List<string> memory)
         {
-           
+
             foreach (string line in memory)
             {
                 Console.WriteLine(line);
             }
-           
+
         }
 
         //function to retrieve 3 random reponses based on Topic
