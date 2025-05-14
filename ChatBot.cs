@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Xml.Linq;
 
 namespace ST10461176_PROG6221_POE
 {
@@ -17,20 +18,27 @@ namespace ST10461176_PROG6221_POE
 
         int programLoopCounter = 0;
 
+       static List<string> save_Data = new List<string>();
+
         //username 
         private string user = string.Empty;
         //creaye cyber dictionary object to give responses
         private CyberDictionary responseDictionary;
         //string to hold the question
         private string question = string.Empty;
-        private MemoryRecall memoryRecall = new MemoryRecall();
+        private MemoryRecall memoryRecall;
         //constructor to initialize the chatbot
         public ChatBot(string user)
         {
             this.user = user;
             responseDictionary = new CyberDictionary();
-            
-            
+            memoryRecall = new MemoryRecall(user);
+
+            if (memoryRecall.fileExists)
+            {
+               displayMemory(memoryRecall.return_memory());
+            }
+
             //keep the state true while the chatbot is active
             Boolean state = true;
             //loop through the chatbot until the user types exit
@@ -43,6 +51,7 @@ namespace ST10461176_PROG6221_POE
                 if (question.Equals("exit")||question.Equals("quit") || question.Equals("q"))
                 {
                     //set the state to false to exit the loop
+                    memoryRecall.save_memory(save_Data);
                     botResponse("Thank you for using CoCo your AI-powered cybersecurity assistant. Have a great day!");
                     state = false;
                 }
@@ -130,6 +139,7 @@ namespace ST10461176_PROG6221_POE
             Console.Write(user + " >> : ");
             Console.ForegroundColor = ConsoleColor.White;
             question = Console.ReadLine();
+            save_Data.Add(user + " >> : " + question);
             question = question.ToLower();
         }
 
@@ -368,6 +378,7 @@ namespace ST10461176_PROG6221_POE
                 Console.Write(bot);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(string.Concat("\t",response));
+                save_Data.Add(bot + "\t" + response);
             }
             //display the response
             else
@@ -381,11 +392,22 @@ namespace ST10461176_PROG6221_POE
                     Console.Write(response[counter]);
                     Thread.Sleep(20);
                 }
+                save_Data.Add(bot + "\t" + response);
                 //Console.WriteLine(string.Concat("\t", response));
                 Console.WriteLine();
                
             }
                 
+        }
+
+        private void displayMemory(List<string> memory)
+        {
+           
+            foreach (string line in memory)
+            {
+                Console.WriteLine(line);
+            }
+           
         }
 
         //function to retrieve 3 random reponses based on Topic
