@@ -16,6 +16,14 @@ namespace ST10461176_PROG6221_POE
         bool malware = false;
         bool ransomware = false;
 
+        bool passwordMemory = false;
+        bool phishingMemory = false;
+        bool safebrowsingMemory = false;
+        bool virusMemory = false;
+        bool malwareMemory = false;
+        bool ransomwareMemory = false;
+
+
         int programLoopCounter = 0;
 
         static List<string> save_Data = new List<string>();
@@ -36,7 +44,16 @@ namespace ST10461176_PROG6221_POE
 
             if (memoryRecall.fileExists)
             {
-                displayMemory(memoryRecall.return_memory());
+
+                botResponse("I have saved your previous questions and responses. Do you want to see them?\nType Yes to load or No to continue without loading");
+                string input = Console.ReadLine();
+                input = input.ToLower();
+                programLoopCounter = 0;
+                if (input.Equals("yes"))
+                {
+                    displayMemory(memoryRecall.return_memory());
+                }
+
             }
 
             //keep the state true while the chatbot is active
@@ -67,10 +84,34 @@ namespace ST10461176_PROG6221_POE
 
         private void askquestion()
         {
-            //ask question
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            if (programLoopCounter >= 4)
+            if (programLoopCounter == 2 || programLoopCounter == 6)
+            {
+                if (passwordMemory)
+                {
+                    botResponse("I remember you asked about passwords before. Do you have any new questions about it?");
+                }
+                if (phishingMemory)
+                {
+                    botResponse("I remember you asked about phishing before. Do you have any new questions about it?");
+                }
+                if (safebrowsingMemory)
+                {
+                    botResponse("I remember you asked about safe browsing before. Do you have any new questions about it?");
+                }
+                if (virusMemory)
+                {
+                    botResponse("I remember you asked about viruses before. Do you have any new questions about it?");
+                }
+                if (malwareMemory)
+                {
+                    botResponse("I remember you asked about malware before. Do you have any new questions about it?");
+                }
+                if (ransomwareMemory)
+                {
+                    botResponse("I remember you asked about ransomware before. Do you have any new questions about it?");
+                }
+            }
+            if (programLoopCounter == 3)
             {
                 if (password)
                 {
@@ -131,10 +172,11 @@ namespace ST10461176_PROG6221_POE
             }
             if (ransomware)
             {
-                botResponse("Free to ask me more about ransomware");
+                botResponse("Feel free to ask me more about ransomware");
 
             }
             //display the question
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Please enter your question below or type 'exit', 'quit', or 'q' to terminate the program");
             Console.Write(user + " >> : ");
             Console.ForegroundColor = ConsoleColor.White;
@@ -275,7 +317,6 @@ namespace ST10461176_PROG6221_POE
                     {
                         //give response based on password
                         botResponse("Thank you I will make sure to remember that you are asking about passwords");
-                        password = true;
                     }
                 }
                 //if phishing has been detected then proceed
@@ -287,7 +328,6 @@ namespace ST10461176_PROG6221_POE
                     {
                         //give response based on phishing
                         botResponse("Thank you I will make sure to remember that you are asking about phishing");
-                        phishing = true;
                     }
 
                 }
@@ -300,7 +340,6 @@ namespace ST10461176_PROG6221_POE
                     {
                         //give response based on safe browsing
                         botResponse("Thank you I will make sure to remember that you are asking about safe browsing");
-                        safebrowsing = true;
                     }
 
                 }
@@ -312,7 +351,6 @@ namespace ST10461176_PROG6221_POE
                     {
                         //give response based on virus
                         botResponse("Thank you I will make sure to remember that you are asking about virus");
-                        virus = true;
                     }
                 }
                 if (malwareDetected)
@@ -322,7 +360,6 @@ namespace ST10461176_PROG6221_POE
                     if (programLoopCounter == 1)
                     {
                         botResponse("Thank you I will make sure to remember that you are asking about malware");
-                        malware = true;
                     }
                 }
                 if (ransomwareDetected)
@@ -333,7 +370,6 @@ namespace ST10461176_PROG6221_POE
                     {
                         //give response based on ransomware
                         botResponse("Thank you I will make sure to remember that you are asking about ransomware");
-                        ransomware = true;
                     }
                 }
 
@@ -363,30 +399,37 @@ namespace ST10461176_PROG6221_POE
                 }
                 if (words[index].Contains("sad"))
                 {
+                    //using lambda expression
                     return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "sad").Value;
                 }
                 if (words[index].Contains("excited"))
                 {
+                    //using lambda expression
                     return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "excited").Value;
                 }
                 if (words[index].Contains("worried"))
                 {
+                    //using lambda expression
                     return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "worried").Value;
                 }
                 if (words[index].Contains("frustrated"))
                 {
+                    //using lambda expression
                     return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "frustrated").Value;
                 }
                 if (words[index].Contains("angry"))
                 {
+                    //using lambda expression
                     return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "angry").Value;
                 }
                 if (words[index].Contains("scared"))
                 {
+                    //using lambda expression
                     return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "scared").Value;
                 }
                 if (words[index].Contains("curious"))
                 {
+                    //using lambda expression
                     return responseDictionary.sentimentKeyword.FirstOrDefault(x => x.Key == "curious").Value;
                 }
             }
@@ -435,6 +478,30 @@ namespace ST10461176_PROG6221_POE
             foreach (string line in memory)
             {
                 Console.WriteLine(line);
+                if (line.Contains("password"))
+                {
+                    passwordMemory = true;
+                }
+                if (line.Contains("phishing"))
+                {
+                    phishingMemory = true;
+                }
+                if (line.Contains("safe browsing"))
+                {
+                    safebrowsingMemory = true;
+                }
+                if (line.Contains("virus"))
+                {
+                    virusMemory = true;
+                }
+                if (line.Contains("malware"))
+                {
+                    malwareMemory = true;
+                }
+                if (line.Contains("ransomware"))
+                {
+                    ransomwareMemory = true;
+                }
             }
 
         }

@@ -1,44 +1,32 @@
 ChatBot >> : 	Welcome to CoCo your AI-powered cybersecurity assistant
 ChatBot >> : 	Hello karabo weclome to CoCo your AI-powered cybersecurity assistant, Whether you’re defending against threats, securing your systems, or just looking for best practices, I’m here to help you stay safe in the digital world. Topics include Password safety,Phishing, Ransomware, Malware, Virus and Computer Safety
-karabo >> : i am scared tell me about phishing
-ChatBot >> : 		Phishing
-			---------
-
-1. Unexpected Attachments or Links: Be cautious of unsolicited emails with attachments or links, especially if they claim to be invoices, receipts, or important documents
-2. Phishing is also a common way for hackers to install malware or ransomware on your device.
-3. If you fall for a phishing scam, attackers can steal your personal information, access your bank accounts, or even commit identity theft.
-This feeling will pass; you will get through this.
-Take a deep breath and exhale slowly. Just focus on your breathing.
-
-ChatBot >> : 	Thank you I will make sure to remember that you are asking about phishing
-ChatBot >> : 	Feel free to ask me more about phishing
-karabo >> : exit
-ChatBot >> : 	Welcome to CoCo your AI-powered cybersecurity assistant
-ChatBot >> : 	Hello karabo weclome to CoCo your AI-powered cybersecurity assistant, Whether you’re defending against threats, securing your systems, or just looking for best practices, I’m here to help you stay safe in the digital world. Topics include Password safety,Phishing, Ransomware, Malware, Virus and Computer Safety
-karabo >> : i am happy tell me about password
-ChatBot >> : 	Thank you I will make sure to remember that you are asking about passwords
+ChatBot >> : 	I have saved your previous questionsa and responses. Do you want to see them?
+Type Yes to load or No to continue without loading
+ChatBot >> : 	Feel free to ask me more about ransomware
+karabo >> : tell me about password
 ChatBot >> : 		Password
 			---------
 
-1. Change your passwords periodically, especially for critical accounts. If you suspect a breach or notice unusual activity, update your password immediately.
+1. Adding an extra layer of security, such as a one-time code sent to your phone or an authenticator app, makes it much harder for attackers to access your accounts, even if they have your password.
 2. Reusing the same password across multiple accounts is risky. If one account is compromised, hackers can access all your other accounts.
-3. Password managers securely store and generate strong, unique passwords for all your accounts. You only need to remember one master password to access them.
-I so appreciate you saying that!
+3. Change your passwords periodically, especially for critical accounts. If you suspect a breach or notice unusual activity, update your password immediately.
 
+ChatBot >> : 	Thank you I will make sure to remember that you are asking about passwords
 ChatBot >> : 	Feel free to ask me more about passwords
-karabo >> : quit
-ChatBot >> : 	Welcome to CoCo your AI-powered cybersecurity assistant
-ChatBot >> : 	Hello karabo weclome to CoCo your AI-powered cybersecurity assistant, Whether you’re defending against threats, securing your systems, or just looking for best practices, I’m here to help you stay safe in the digital world. Topics include Password safety,Phishing, Ransomware, Malware, Virus and Computer Safety
-karabo >> : tell me about ransomware i am scared
+ChatBot >> : 	Feel free to ask me more about ransomware
+karabo >> : tell me about ransomware
 ChatBot >> : 		Ransomware
 			-----------
 
-1. To protect against ransomware, regularly back up your important files to an external drive or cloud storage, and keep your operating system and applications updated.
-2. Ransomware is a type of malware that encrypts a victim's files, rendering them inaccessible until a ransom is paid to the attacker.
-3. Use reputable antivirus software that includes ransomware protection features.
-This feeling will pass; you will get through this.
-Take a deep breath and exhale slowly. Just focus on your breathing.
+1. Ransomware often spreads through phishing emails, malicious downloads, or exploiting vulnerabilities in software.
+2. Use reputable antivirus software that includes ransomware protection features.
+3. Paying the ransom does not guarantee that you will regain access to your files, and it may encourage further attacks.
 
-ChatBot >> : 	Thank you I will make sure to remember that you are asking about ransomware
-ChatBot >> : 	Free to ask me more about ransomware
+ChatBot >> : 	I remember you asked about passwords before. Do you have any new questions about it?
+ChatBot >> : 	I remember you asked about phishing before. Do you have any new questions about it?
+ChatBot >> : 	I remember you asked about viruses before. Do you have any new questions about it?
+ChatBot >> : 	I remember you asked about malware before. Do you have any new questions about it?
+ChatBot >> : 	I remember you asked about ransomware before. Do you have any new questions about it?
+ChatBot >> : 	Feel free to ask me more about passwords
+ChatBot >> : 	Feel free to ask me more about ransomware
 karabo >> : exit
