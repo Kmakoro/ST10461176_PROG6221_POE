@@ -149,6 +149,13 @@ namespace ST10461176_PROG6221_POE
             keywords.Add("you");
             keywords.Add("my");
             keywords.Add("worried");
+            keywords.Add("sad");
+            keywords.Add("happy");
+            keywords.Add("angry");
+            keywords.Add("excited");
+            keywords.Add("frustrated");
+            keywords.Add("curious");
+            keywords.Add("scared");
         }
         //initialize the password topic
         private void password()
