@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 
 namespace ST10461176_PROG6221_POE
@@ -6,19 +7,19 @@ namespace ST10461176_PROG6221_POE
     class CyberDictionary
     {
         //dictionary to check the keys based on topic
-        private ArrayList keywords = new ArrayList();
+        private List<string> keywords = new List<string>();
         //dictionary for password topic
-        private ArrayList passwordsTopic = new ArrayList();
+        private List<string> passwordsTopic = new List<string>();
         //dictionary for phishing topic
-        private ArrayList phishingTopic = new ArrayList();
+        private List<string> phishingTopic = new List<string>();
         //dictionary for safe browsing topic
-        private ArrayList safeBrowsingTopic = new ArrayList();
+        private List<string> safeBrowsingTopic = new List<string>();
         //dictionary for virus topic
-        private ArrayList virusTopic = new ArrayList();
+        private List<string> virusTopic = new List<string>();
         //dictionary for malware topic
-        private ArrayList malwareTopic = new ArrayList();
+        private List<string> malwareTopic = new List<string>();
         //dictionary for ransomware topic
-        private ArrayList ransomwareTopic = new ArrayList();
+        private List<string> ransomwareTopic = new List<string>();
 
         public CyberDictionary()
         {
@@ -33,37 +34,37 @@ namespace ST10461176_PROG6221_POE
         }
 
         //return method for password dictionary
-        public ArrayList getPasswordDictionary()
+        public List<string> getPasswordDictionary()
         {
             return this.passwordsTopic;
         }
         //return method for phishing dictionary
-        public ArrayList getPhishingDictionary()
+        public List<string> getPhishingDictionary()
         {
             return this.phishingTopic;
         }
         //return method for safe browsing dictionary
-        public ArrayList getSafeBrosingDictionary()
+        public List<string> getSafeBrosingDictionary()
         {
             return this.safeBrowsingTopic;
         }
         //return method for keywords dictionary
-        public ArrayList getKeywords()
+        public List<string> getKeywords()
         {
             return this.keywords;
         }
         //return method for virus dictionary
-        public ArrayList getVirusDictionary()
+        public List<string> getVirusDictionary()
         {
             return this.virusTopic;
         }
         //return method for malware dictionary
-        public ArrayList getMalwareDictionary()
+        public List<string> getMalwareDictionary()
         {
             return this.malwareTopic;
         }
         //return method for ransomware dictionary
-        public ArrayList getRansomwareDictionary()
+        public List<string> getRansomwareDictionary()
         {
             return this.ransomwareTopic;
         }

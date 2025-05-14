@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace ST10461176_PROG6221_POE
@@ -261,7 +262,7 @@ namespace ST10461176_PROG6221_POE
         }
 
         //function to retrieve 3 random reponses based on Topic
-        private string Response(ArrayList Topic, string optional = null)
+        private string Response(List<string> Topic, string optional = null)
         {
             //local string variable to hold the response
             string response = string.Empty;
@@ -270,7 +271,7 @@ namespace ST10461176_PROG6221_POE
             //convert dictionary keys to a list for easy random access
             //List<string> randomkeys = Topic.Keys.ToList();
 
-            string[] arrayTopic = (string[])Topic.ToArray(typeof(string));
+            string[] arrayTopic = (string[])Topic.ToArray();
             //randomly display 3 values from the dictionary
             for (int counter = 0; counter < 3; counter++)
             {
