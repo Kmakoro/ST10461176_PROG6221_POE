@@ -23,7 +23,7 @@ namespace ST10461176_PROG6221_POE
         private CyberDictionary responseDictionary;
         //string to hold the question
         private string question = string.Empty;
-
+        private MemoryRecall memoryRecall = new MemoryRecall();
         //constructor to initialize the chatbot
         public ChatBot(string user)
         {
