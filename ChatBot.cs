@@ -8,7 +8,15 @@ namespace ST10461176_PROG6221_POE
 {
     public class ChatBot
     {
-        
+        bool password = false;
+        bool phishing = false;
+        bool safebrowsing = false;
+        bool virus = false;
+        bool malware = false;
+        bool ransomware = false;
+
+        int programLoopCounter = 0;
+
         //username 
         private string user = string.Empty;
         //creaye cyber dictionary object to give responses
@@ -30,7 +38,7 @@ namespace ST10461176_PROG6221_POE
             {
                 //method to ask question
                 askquestion();
-
+                programLoopCounter++;
                 //check if the user wants to exit
                 if (question.Equals("exit")||question.Equals("quit") || question.Equals("q"))
                 {
@@ -53,6 +61,71 @@ namespace ST10461176_PROG6221_POE
             //ask question
             
             Console.ForegroundColor = ConsoleColor.Green;
+            if (programLoopCounter >= 4)
+            {
+                if (password)
+                {
+                    botResponse("Remember to use strong passwords and avoid sharing them with anyone. If you have any questions about password security");
+                    programLoopCounter = 0;
+                }
+                if (phishing)
+                {
+                    botResponse("Be cautious of phishing attempts. Always verify the source before clicking on links or providing personal information");
+                    programLoopCounter = 0;
+                }
+                if (safebrowsing)
+                {
+                    botResponse("Safe browsing is important. Make sure to use secure connections and be cautious of suspicious websites");
+                    programLoopCounter = 0;
+                }
+                if (virus)
+                {
+                    botResponse("Viruses can be harmful to your system. Ensure you have up-to-date antivirus software and avoid downloading unknown files");
+                    programLoopCounter = 0;
+                }
+                if (malware)
+                {
+                    botResponse("Malware can compromise your system. Always be cautious of downloads and use reliable security software");
+                    programLoopCounter = 0;
+                }
+                if (ransomware)
+                {
+                    botResponse("Ransomware can be devastating. Always back up your data and be cautious of suspicious emails and downloads");
+                    programLoopCounter = 0;
+                }
+            }
+            //display the question
+            if (password)
+            {
+                botResponse("Feel free to ask me more about passwords");
+               
+            }
+            if (phishing)
+            {
+                botResponse("Feel free to ask me more about phishing");
+               
+            }
+            if (safebrowsing)
+            {
+                botResponse("Feel free to ask me more about safe browsing");
+                
+            }
+            if (virus)
+            {
+                botResponse("Feel free to ask me more about viruses");
+                
+            }
+            if (malware)
+            {
+                botResponse("Feel free to ask me more about malware");
+                
+            }
+            if (ransomware)
+            {
+                botResponse("Free to ask me more about ransomware");
+                
+            }
+            //display the question
             Console.WriteLine($"Please enter your question below or type 'exit', 'quit', or 'q' to terminate the program");
             Console.Write(user + " >> : ");
             Console.ForegroundColor = ConsoleColor.White;
@@ -68,7 +141,7 @@ namespace ST10461176_PROG6221_POE
             Boolean virusdeteDetected = false;
             Boolean malwareDetected = false;
             Boolean ransomwareDetected = false;
-            
+
 
             //create a local string variable to hold the words
             string[] words;//array for the split function to split words
@@ -106,6 +179,7 @@ namespace ST10461176_PROG6221_POE
                         {
                             
                             passworddetected = true;
+                            password = true;
 
                         }
                         //check if the user is asking about phishing
@@ -113,26 +187,31 @@ namespace ST10461176_PROG6221_POE
                         {
                             
                             phishingDetected = true;
+                            phishing = true;
                         }
                         //check if the user is asking about safe browsing
                         if (question.Contains("safe browsing"))
                         {
 
                             safebrowsingDetected = true;
+                            safebrowsing = true;
                         }
                         //check if the user is asking about virus
                         if (words[index].Contains("virus"))
                         {
                             virusdeteDetected = true;
+                            virus = true;
                         }
                         //check if the user is asking about malware
                         if (words[index].Contains("malware"))
                         {
                             malwareDetected = true;
+                            malware = true;
                         }
                         //check if the user is asking about ransomware
                         if (words[index].Contains("ransomware")){
                             ransomwareDetected = true;
+                            ransomware = true;
                         }
                         //provide a response to the user to greet the user
                         if (question.Contains("hello"))
@@ -182,7 +261,7 @@ namespace ST10461176_PROG6221_POE
                 {
                     
                     //give response based on password
-                    botResponse((Response(responseDictionary.getPasswordDictionary(),"\tPassword")) + checkSentiment(question) );
+                    botResponse((Response(responseDictionary.getPasswordDictionary(),"\tPassword")) + "\n"+ checkSentiment(question) );
                   
 
                 }
@@ -191,7 +270,7 @@ namespace ST10461176_PROG6221_POE
                 {
                     
                     //give response based on phishing
-                    botResponse( (Response(responseDictionary.getPhishingDictionary(),"\tPhishing")) + checkSentiment(question));
+                    botResponse( (Response(responseDictionary.getPhishingDictionary(),"\tPhishing")) + "\n" + checkSentiment(question));
                     
                     
                 }
@@ -200,23 +279,23 @@ namespace ST10461176_PROG6221_POE
                 {
 
                     //give response based on safe browsing
-                    botResponse((Response(responseDictionary.getSafeBrosingDictionary(), "\tSafe Browsing")) + checkSentiment(question));
+                    botResponse((Response(responseDictionary.getSafeBrosingDictionary(), "\tSafe Browsing")) + "\n" + checkSentiment(question));
 
                 }
                 if(virusdeteDetected)
                 {
                     //give response based on virus
-                    botResponse((Response(responseDictionary.getVirusDictionary(), "\tVirus")) + checkSentiment(question));
+                    botResponse((Response(responseDictionary.getVirusDictionary(), "\tVirus")) + "\n" + checkSentiment(question));
                 }
                 if (malwareDetected)
                 {
                     //give response based on malware
-                    botResponse( (Response(responseDictionary.getMalwareDictionary(), "\tMalware")) + checkSentiment(question));
+                    botResponse( (Response(responseDictionary.getMalwareDictionary(), "\tMalware")) + "\n" + checkSentiment(question));
                 }
                 if (ransomwareDetected)
                 {
                     //give response based on ransomware
-                    botResponse( (Response(responseDictionary.getRansomwareDictionary(), "\tRansomware")) + checkSentiment(question));
+                    botResponse( (Response(responseDictionary.getRansomwareDictionary(), "\tRansomware")) + "\n" + checkSentiment(question));
                 }
 
             }
