@@ -270,15 +270,15 @@ namespace ST10461176_PROG6221_POE
                 if (passworddetected)
                 {
 
+                    
+                    
+                    botResponse((Response(responseDictionary.getPasswordDictionary(),"\tPassword")) + "\n"+ checkSentiment(question) );
                     //give response based on password
                     if (programLoopCounter == 1)
                     {
                         //give response based on password
                         botResponse("Thank you I will make sure to remember that you are asking about passwords");
                     }
-                    
-                    botResponse((Response(responseDictionary.getPasswordDictionary(),"\tPassword")) + "\n"+ checkSentiment(question) );
-                    
 
                 }
                 //if phishing has been detected then proceed
