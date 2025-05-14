@@ -182,7 +182,7 @@ namespace ST10461176_PROG6221_POE
                 {
                     
                     //give response based on password
-                    botResponse(checkSentiment(question)+(Response(responseDictionary.getPasswordDictionary(),"\tPassword")));
+                    botResponse((Response(responseDictionary.getPasswordDictionary(),"\tPassword")) + checkSentiment(question) );
                   
 
                 }
@@ -191,7 +191,7 @@ namespace ST10461176_PROG6221_POE
                 {
                     
                     //give response based on phishing
-                    botResponse(checkSentiment(question) + (Response(responseDictionary.getPhishingDictionary(),"\tPhishing")));
+                    botResponse( (Response(responseDictionary.getPhishingDictionary(),"\tPhishing")) + checkSentiment(question));
                     
                     
                 }
@@ -200,23 +200,23 @@ namespace ST10461176_PROG6221_POE
                 {
 
                     //give response based on safe browsing
-                    botResponse(checkSentiment(question) + (Response(responseDictionary.getSafeBrosingDictionary(), "\tSafe Browsing")));
+                    botResponse((Response(responseDictionary.getSafeBrosingDictionary(), "\tSafe Browsing")) + checkSentiment(question));
 
                 }
                 if(virusdeteDetected)
                 {
                     //give response based on virus
-                    botResponse(checkSentiment(question) + (Response(responseDictionary.getVirusDictionary(), "\tVirus")));
+                    botResponse((Response(responseDictionary.getVirusDictionary(), "\tVirus")) + checkSentiment(question));
                 }
                 if (malwareDetected)
                 {
                     //give response based on malware
-                    botResponse(checkSentiment(question) + (Response(responseDictionary.getMalwareDictionary(), "\tMalware")));
+                    botResponse( (Response(responseDictionary.getMalwareDictionary(), "\tMalware")) + checkSentiment(question));
                 }
                 if (ransomwareDetected)
                 {
                     //give response based on ransomware
-                    botResponse(checkSentiment(question) + (Response(responseDictionary.getRansomwareDictionary(), "\tRansomware")));
+                    botResponse( (Response(responseDictionary.getRansomwareDictionary(), "\tRansomware")) + checkSentiment(question));
                 }
 
             }
