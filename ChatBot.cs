@@ -311,7 +311,8 @@ namespace ST10461176_PROG6221_POE
                 //if password has been detected then proceed
                 if (passworddetected)
                 {
-                    botResponse((Response(responseDictionary.getPasswordDictionary(), "\tPassword")) + "\n" + checkSentiment(question));
+                    botResponse(checkSentiment(question));
+                    botResponse((Response(responseDictionary.getPasswordDictionary(), "\tPassword")));
                     //give response based on password
                     if (programLoopCounter == 1)
                     {
@@ -322,8 +323,10 @@ namespace ST10461176_PROG6221_POE
                 //if phishing has been detected then proceed
                 if (phishingDetected)
                 {
+
+                    botResponse(checkSentiment(question));
                     //give response based on phishing
-                    botResponse((Response(responseDictionary.getPhishingDictionary(), "\tPhishing")) + "\n" + checkSentiment(question));
+                    botResponse((Response(responseDictionary.getPhishingDictionary(), "\tPhishing")));
                     if (programLoopCounter == 1)
                     {
                         //give response based on phishing
@@ -334,8 +337,9 @@ namespace ST10461176_PROG6221_POE
                 //if safe browsing has been detected then proceed
                 if (safebrowsingDetected)
                 {
+                    botResponse(checkSentiment(question));
                     //give response based on safe browsing
-                    botResponse((Response(responseDictionary.getSafeBrosingDictionary(), "\tSafe Browsing")) + "\n" + checkSentiment(question));
+                    botResponse((Response(responseDictionary.getSafeBrosingDictionary(), "\tSafe Browsing")));
                     if (programLoopCounter == 1)
                     {
                         //give response based on safe browsing
@@ -345,8 +349,9 @@ namespace ST10461176_PROG6221_POE
                 }
                 if (virusdeteDetected)
                 {
+                    botResponse(checkSentiment(question));
                     //give response based on virus
-                    botResponse((Response(responseDictionary.getVirusDictionary(), "\tVirus")) + "\n" + checkSentiment(question));
+                    botResponse((Response(responseDictionary.getVirusDictionary(), "\tVirus")));
                     if (programLoopCounter == 1)
                     {
                         //give response based on virus
@@ -355,8 +360,9 @@ namespace ST10461176_PROG6221_POE
                 }
                 if (malwareDetected)
                 {
+                    botResponse(checkSentiment(question));
                     //give response based on malware
-                    botResponse((Response(responseDictionary.getMalwareDictionary(), "\tMalware")) + "\n" + checkSentiment(question));
+                    botResponse((Response(responseDictionary.getMalwareDictionary(), "\tMalware")));
                     if (programLoopCounter == 1)
                     {
                         botResponse("Thank you I will make sure to remember that you are asking about malware");
@@ -364,8 +370,9 @@ namespace ST10461176_PROG6221_POE
                 }
                 if (ransomwareDetected)
                 {
+                    botResponse(checkSentiment(question));
                     //give response based on ransomware
-                    botResponse((Response(responseDictionary.getRansomwareDictionary(), "\tRansomware")) + "\n" + checkSentiment(question));
+                    botResponse((Response(responseDictionary.getRansomwareDictionary(), "\tRansomware")));
                     if (programLoopCounter == 1)
                     {
                         //give response based on ransomware

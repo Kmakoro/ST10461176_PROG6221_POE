@@ -1,31 +1,35 @@
 ChatBot >> : 	Welcome to CoCo your AI-powered cybersecurity assistant
 ChatBot >> : 	Hello thato weclome to CoCo your AI-powered cybersecurity assistant, Whether you’re defending against threats, securing your systems, or just looking for best practices, I’m here to help you stay safe in the digital world. Topics include Password safety,Phishing, Ransomware, Malware, Virus and Computer Safety
-ChatBot >> : 	I have saved your previous questionsa and responses. Do you want to see them?
+ChatBot >> : 	I have saved your previous questions and responses. Do you want to see them?
 Type Yes to load or No to continue without loading
-thato >> : tell me more about ransomware
-ChatBot >> : 		Ransomware
-			-----------
+thato >> : i am scared of virus
+ChatBot >> : 		Virus
+			------
 
-1. Paying the ransom does not guarantee that you will regain access to your files, and it may encourage further attacks.
-2. Ransomware is a type of malware that encrypts a victim's files, rendering them inaccessible until a ransom is paid to the attacker.
-3. Be cautious when clicking on links or downloading attachments from unknown sources, as they may contain ransomware.
+1. Always scan external drives and downloads with antivirus software before opening them.
+2. Educate yourself about common virus types, such as file infectors, macro viruses, and boot sector viruses, to better understand the risks.
+3. Viruses can corrupt or delete files, steal personal information, and disrupt system performance.
+This feeling will pass; you will get through this.
+Take a deep breath and exhale slowly. Just focus on your breathing.
 
-ChatBot >> : 	Thank you I will make sure to remember that you are asking about ransomware
-ChatBot >> : 	Feel free to ask me more about ransomware
-thato >> : tell me again about password
-ChatBot >> : 	I didn't quite understand that. Could you rephrase? Remember to as me about topics related to cyber security
-ChatBot >> : 	I remember you asked about passwords before. Do you have any new questions about it?
-ChatBot >> : 	Feel free to ask me more about ransomware
-thato >> : tell me about password safety
+ChatBot >> : 	Thank you I will make sure to remember that you are asking about virus
+ChatBot >> : 	Feel free to ask me more about viruses
+thato >> : i am worried about my password safety
+ChatBot >> : 	It’s okay to feel anxious, it doesn’t define who you are.
+You’re stronger than you think, and you’ll get through this.
+
 ChatBot >> : 		Password
 			---------
 
-1. Reusing the same password across multiple accounts is risky. If one account is compromised, hackers can access all your other accounts.
-2. Hackers often trick people into revealing their passwords through fake emails, websites, or messages. Always verify the sender's identity and avoid clicking on suspicious links.
-3. Change your passwords periodically, especially for critical accounts. If you suspect a breach or notice unusual activity, update your password immediately.
+1. Change your passwords periodically, especially for critical accounts. If you suspect a breach or notice unusual activity, update your password immediately.
+2. Reusing the same password across multiple accounts is risky. If one account is compromised, hackers can access all your other accounts.
+3. Password managers securely store and generate strong, unique passwords for all your accounts. You only need to remember one master password to access them.
+It’s okay to feel anxious, it doesn’t define who you are.
+You’re stronger than you think, and you’ll get through this.
 
-ChatBot >> : 	Remember to use strong passwords and avoid sharing them with anyone. If you have any questions about password security
-ChatBot >> : 	Ransomware can be devastating. Always back up your data and be cautious of suspicious emails and downloads
+ChatBot >> : 	I remember you asked about passwords before. Do you have any new questions about it?
+ChatBot >> : 	I remember you asked about malware before. Do you have any new questions about it?
+ChatBot >> : 	I remember you asked about ransomware before. Do you have any new questions about it?
 ChatBot >> : 	Feel free to ask me more about passwords
-ChatBot >> : 	Feel free to ask me more about ransomware
+ChatBot >> : 	Feel free to ask me more about viruses
 thato >> : exit

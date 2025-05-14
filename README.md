@@ -13,7 +13,13 @@ This C# console application provides an interactive AI chatbot that delivers cyb
   4. **Ransomware**: Prevention and response guidance for ransomware attacks
   5. **Safe Browsing**: Techniques for secure internet usage
   6. **Viruses**: Computer virus prevention and removal strategies
-- **User-Friendly Design**: Simple text-based interaction suitable for all technical levels
+  - **User-Friendly Design**: Simple text-based interaction suitable for all technical levels
+  **Update Release**
+  1. **Sentiment Detection**: Responses crafted to respod to a users sentiment being "worried", "sad", "Curious", "Happy", "Frustrated", "Scared", "angry" and "excited" are some of the moods it will generously respond to.
+  2. **Memory Recall**: Simply recall your previous search history along with responses you recieved.
+  3. **Random Responses**: Get random responses generated from the library for the Core security Topics
+  4. **Conversation Flow**: New and improved conversation flow to make it feel more human as interaction takes place
+
 
 ## Installation
 ### Requirements
